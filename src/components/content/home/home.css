@@ -1,0 +1,13 @@
+
+.tmc_content{
+    margin-top:3%;
+}
+.tmc_content_general_info_status_bar{
+    display: block;
+}
+.tmc_content_general_info_task_id{
+    margin-right: 5%;
+}
+.tmc_content_general_info_status{
+    margin-left: 5%;
+}
