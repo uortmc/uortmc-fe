@@ -1,0 +1,4 @@
+We do not need to set up a Procfile or a heroku.yml as the heroku regognises the dir structure as node project
+
+Also, by default, React listens on the env-variable PORT, and heroky sets this PORT to the nessesary port, so everything is fine!
+
