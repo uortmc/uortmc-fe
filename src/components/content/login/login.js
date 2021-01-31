@@ -51,6 +51,8 @@ class Login extends React.Component{
     }
     onResponce(responce){
         if(responce.data.complete){
+            console.log("Request completed")
+            console.log(responce)
             this.setState({
                 loginStatus:LoginStatus.Success
             })
