@@ -1,6 +1,6 @@
 
 class RequestSettings{
-    static BACKEND_URL="http://127.0.0.1:5000"
+    static BACKEND_URL=process.env.BACKEND_URL
 }
 
 export default RequestSettings;
