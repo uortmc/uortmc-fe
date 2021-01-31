@@ -34,7 +34,7 @@ class Login extends React.Component{
         });
         var config = {
             method: 'post',
-            url: 'http://127.0.0.1:5000/app/auth/login/',
+            url: 'https://uortmc-infobe.herokuapp.com/app/auth/login/',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
