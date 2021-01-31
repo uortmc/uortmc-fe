@@ -1,6 +1,7 @@
 
 class RequestSettings{
-    static BACKEND_URL=process.env.BACKEND_URL
+    static BACKEND_URL="https://uortmc-infobe.herokuapp.com"
+
 }
 
 export default RequestSettings;

@@ -26,6 +26,7 @@ class Login extends React.Component{
         }
     }
     submit(e){
+        console.log(RequestSettings.BACKEND_URL)
         let self=this
         var axios = require('axios');
         var qs = require('qs');
