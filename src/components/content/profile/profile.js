@@ -4,9 +4,32 @@ import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.svg'
 import style from './profile.css'
+import profile from './requests'
 class Profile extends React.Component{
     constructor(props) {
         super(props);
+        this.state={
+            first_name:"",
+            last_name:"",
+            title:"",
+            enrolled_date:"",
+            last_seen:"",
+            online_status:"",
+            tasks:""
+        }
+
+        profile(this.onResponce.bind(this))
+    }
+    onResponce(data){
+        this.setState({
+            first_name:data.responce.first_name,
+            last_name:data.responce.last_name,
+            title:data.responce.title,
+            enrolled_date:data.responce.enrolled_date,
+            last_seen:data.responce.last_seen,
+            online_status:data.responce.online_status,
+            tasks:data.responce.tasks
+        })
     }
     render() {
         return <div className="container-fluid">
@@ -18,8 +41,8 @@ class Profile extends React.Component{
                             </div>
                             <div className="col-8">
                                 <div className="card-body">
-                                    <h5 className="card-title">Dr. Jonh Doe</h5>
-                                    <p className="card-text">Associated Radiologist: St Mary's Hospital</p>
+                                    <h5 className="card-title">{this.state.first_name+" "+this.state.last_name}</h5>
+                                    <p className="card-text">{this.state.title}</p>
                                     <p className="card-text"><small className="text-muted">Online Now</small></p>
                                 </div>
                             </div>
@@ -28,11 +51,11 @@ class Profile extends React.Component{
                 </div>
                 <div className="row">
                     <div id="list-example" className="list-group col-12">
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">Permission : User</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">Enrolled Date : {new Date().toDateString()}</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">Total Tasks : 231</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Quota Left : 32</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Montly Quota : 40</a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">Permission : Doctor</a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-2">Enrolled Date : {this.state.enrolled_date}</a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-3">Total Tasks : {this.state.tasks}</a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Quota Left : No limit</a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Montly Quota : No limit</a>
                     </div>
                 </div>
             </div>

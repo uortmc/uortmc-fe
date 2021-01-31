@@ -19,7 +19,7 @@ class Login extends React.Component{
         super(props);
         this.state={
             loginStatus:LoginStatus.NotSubmitted,
-            username:"huizhi.liang.3",
+            username:"huizhi.liang",
             password:"12345678",
             triggerAuthorized:props.triggerAuthorized
         }
@@ -34,7 +34,7 @@ class Login extends React.Component{
         });
         var config = {
             method: 'post',
-            url: 'https://uortmc-infobe.herokuapp.com/app/auth/login/',
+            url: 'http://127.0.0.1:5000/app/auth/login/',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -51,8 +51,6 @@ class Login extends React.Component{
     }
     onResponce(responce){
         if(responce.data.complete){
-            console.log("Request completed")
-            console.log(responce)
             this.setState({
                 loginStatus:LoginStatus.Success
             })

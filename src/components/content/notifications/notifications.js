@@ -2,85 +2,41 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import notifications from "./requests";
 
 class Notifications extends React.Component{
     constructor(props) {
         super(props);
+        this.state={
+            notifications:[]
+        }
+
+        notifications(this.onResponce.bind(this))
     }
-    render() {
+
+    onResponce(responce) {
+        this.setState({
+            notifications:responce.responce
+        })
+        console.log(responce.responce)
+    }
+    renderNotification(notification){
+
         return <div className="container-fluid">
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
 
-                </div>
-            </div>
             <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
                 <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
-
-                </div>
-            </div>
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
-
-                </div>
-            </div>
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
-
-                </div>
-            </div>
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
-
-                </div>
-            </div>
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
-
-                </div>
-            </div>
-            <div className="card border-info mb-3" >
-                <div className="card-header">Task : 37823</div>
-                <div className="card-body text-info">
-                    <h5 className="card-title">Task Completed</h5>
-                    <p className="card-text">Your Task 37827, referring to patient 81829387, has been completed </p>
-                    <p className="card-text"><small className="text-muted">Created 3 mins ago</small></p>
-                    <button className="btn btn-info">Detailed View</button>
+                    <h5 className="card-title">Notification</h5>
+                    <p className="card-text">Message:{notification.message}</p>
+                    <p className="card-text"><small className="text-muted">Created :{notification.created}</small></p>
 
                 </div>
             </div>
         </div>
+    }
+
+    render() {
+        return this.state.notifications.map(this.renderNotification)
     }
 }
 
