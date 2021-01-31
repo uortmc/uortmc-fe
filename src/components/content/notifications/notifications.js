@@ -29,7 +29,6 @@ class Notifications extends React.Component{
                     <h5 className="card-title">Notification</h5>
                     <p className="card-text">Message:{notification.message}</p>
                     <p className="card-text"><small className="text-muted">Created :{notification.created}</small></p>
-
                 </div>
             </div>
         </div>
