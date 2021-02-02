@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import example_scan from "../../../resources/example_scan.jpg";
 import style from './login.css'
 
-import RequestSettings from "../../../settings";
+import Enviroment from "../../../settings";
 /**
  * LoginStatus
  */
@@ -26,7 +26,7 @@ class Login extends React.Component{
         }
     }
     submit(e){
-        console.log(RequestSettings.BACKEND_URL)
+        console.log(Enviroment.BACKEND_URL)
         let self=this
         var axios = require('axios');
         var qs = require('qs');
@@ -36,7 +36,7 @@ class Login extends React.Component{
         });
         var config = {
             method: 'post',
-            url: RequestSettings.BACKEND_URL+'/app/auth/login/',
+            url: Enviroment.BACKEND_URL+'/app/auth/login/',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
