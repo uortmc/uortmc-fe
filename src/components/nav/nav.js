@@ -6,12 +6,20 @@ import style from './nav.css'
 import Profile from "../content/profile/profile";
 import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";
+import username from "./requests";
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            content_element_update:this.props.content_element_update
+            content_element_update:this.props.content_element_update,
+            username:""
         }
+        username(this.onResponce.bind(this))
+    }
+    onResponce(username){
+        this.setState({
+            username:username
+        })
     }
     render() {
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,7 +46,7 @@ class NavBar extends React.Component{
                 </ul>
                 <span className="navbar-text">
                     <img className="tmc_user_icon" src={user_img} />
-                    <span className="tmc_user_name"> Dr. Jonh Doe</span>
+                    <span className="tmc_user_name"> {this.state.username}</span>
                 </span>
             </div>
         </nav>
