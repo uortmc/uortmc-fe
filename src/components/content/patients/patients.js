@@ -7,10 +7,74 @@ import ScanHistory from "../scan_history/scan_history";
 import Profile from "../profile/profile";
 import style from './patients.css'
 
-class Patients extends React.Component{
+import Handsontable from "handsontable";
+import { HotTable, HotColumn } from "@handsontable/react";
+import "handsontable/dist/handsontable.min.css";
+import patients from "./requests";
+
+class Patients extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            hotData: [
+                ["","","","",""]
+            ],
+            table_conf:{
+                width: '100%'
+
+            },
+            firstname_collumn_settings: {
+                title: "First Name",
+                readOnly: true
+
+            },
+            lastname_collumn_settings: {
+                title: "Last Name",
+                readOnly: true
+            },
+            nino_collumn_settings: {
+                title: "Nino",
+                readOnly: true
+            },
+            enrolled_collumn_settings: {
+                title: "Enrolled Date",
+                readOnly: true
+            },
+            comments_collumn_settings: {
+                title: "Comments",
+                readOnly: true
+
+            }
+        };
+
+        patients(this.onPatientsResponce.bind(this))
+
     }
+    toHotTableCollumn(patient){
+        return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments]
+    }
+    onPatientsResponce(responce){
+        this.setState({
+            hotData:responce.map(this.toHotTableCollumn)
+        })
+    }
+    rendertable() {
+        return (
+                <HotTable
+                    data={this.state.hotData}
+                    licenseKey="non-commercial-and-evaluation"
+                    settings={this.state.table_conf}
+                >
+                    <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
+                    <HotColumn settings={this.state.lastname_collumn_settings} className="tmc_hot_collumn"/>
+                    <HotColumn settings={this.state.nino_collumn_settings} className="tmc_hot_collumn"/>
+                    <HotColumn settings={this.state.enrolled_collumn_settings} className="tmc_hot_collumn"/>
+                    <HotColumn settings={this.state.comments_collumn_settings} className="tmc_hot_collumn"/>
+                </HotTable>
+        );
+    }
+
     render() {
         return <div className="containter-fluid">
             <div className="row">
@@ -24,35 +88,7 @@ class Patients extends React.Component{
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12 tmc_patient_list">
-                    <div id="list-example" className="list-group ">
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">A. Adams</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">S. Baker</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">N. Clark</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">M. Davis</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">K. Evans</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">A. Adams</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">S. Baker</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">N. Clark</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">M. Davis</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">K. Evans</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">A. Adams</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">S. Baker</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">N. Clark</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">M. Davis</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">K. Evans</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">A. Adams</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">S. Baker</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">N. Clark</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">M. Davis</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">K. Evans</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">A. Adams</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">S. Baker</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">N. Clark</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">M. Davis</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">K. Evans</a>
-                    </div>
-                </div>
+                {this.rendertable()}
             </div>
         </div>
     }
