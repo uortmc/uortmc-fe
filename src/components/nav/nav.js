@@ -6,19 +6,27 @@ import style from './nav.css'
 import Profile from "../content/profile/profile";
 import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";
-import username from "./requests";
+
+import Requests from "./requests";
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state={
             content_element_update:this.props.content_element_update,
-            username:""
+            username:"",
+            notifications:0
         }
-        username(this.onResponce.bind(this))
+        Requests.username(this.onUsernameResponce.bind(this))
+        Requests.notifications(this.onNotificationsNumberResponce.bind(this))
     }
-    onResponce(username){
+    onUsernameResponce(username){
         this.setState({
             username:username
+        })
+    }
+    onNotificationsNumberResponce(notifications){
+        this.setState({
+            notifications:notifications
         })
     }
     render() {
@@ -40,7 +48,9 @@ class NavBar extends React.Component{
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Profile/>)}>Profile</a>
                     </li>
                     <li className="nav-item tmc_nav_item">
-                        <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Notifications/>)} >Notifications<span className="badge badge-pill badge-primary">6</span>
+                        <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Notifications/>)} >Notifications<span className="badge badge-pill badge-primary">
+                            {this.state.notifications}
+                        </span>
                         </a>
                     </li>
                 </ul>
