@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class ScanHistory extends React.Component{
+class MyScans extends React.Component{
     constructor(props) {
         super(props);
     }
@@ -85,4 +85,4 @@ class ScanHistory extends React.Component{
 }
 
 
-export default ScanHistory;
+export default MyScans;

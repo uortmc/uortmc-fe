@@ -2,8 +2,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CompletedTasks from "../completed_tasks/completed_tasks";
-import ScanHistory from "../scan_history/scan_history";
+import CompletedTasks from "../completed_scans/completed_scans";
+import MyScans from "../my_scans/my_scans";
 import Profile from "../profile/profile";
 import style from './patients.css'
 
@@ -21,7 +21,8 @@ class Patients extends React.Component {
                 ["","","","",""]
             ],
             table_conf:{
-                width: '100%'
+                width: '100%',
+                stretchV:"all",
 
             },
             firstname_collumn_settings: {
@@ -59,13 +60,14 @@ class Patients extends React.Component {
             hotData:responce.map(this.toHotTableCollumn)
         })
     }
-    rendertable() {
+    renderTable() {
         return (
                 <HotTable
                     data={this.state.hotData}
                     licenseKey="non-commercial-and-evaluation"
                     settings={this.state.table_conf}
-                >
+                    className="tmc_hot_table">
+
                     <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.lastname_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.nino_collumn_settings} className="tmc_hot_collumn"/>
@@ -76,7 +78,7 @@ class Patients extends React.Component {
     }
 
     render() {
-        return <div className="containter-fluid">
+        return <div className="containter">
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">
@@ -88,7 +90,9 @@ class Patients extends React.Component {
                 </nav>
             </div>
             <div className="row">
-                {this.rendertable()}
+                <div className="col-12">
+                    {this.renderTable()}
+                </div>
             </div>
         </div>
     }
