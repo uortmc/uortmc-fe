@@ -2,7 +2,7 @@
 import Enviroment from "../../../settings";
 var axios = require('axios');
 var qs = require('qs');
-function patients(callback) {
+function patients(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
     var config = {
         method: 'get',
         url: Enviroment.BACKEND_URL+'/app/authenticated/getpatients',
@@ -10,10 +10,14 @@ function patients(callback) {
     };
     axios(config)
         .then(function (response) {
-            callback(response.data.responce)
+            if(response.data.complete===true){
+                onSuccessCallback(response.data.responce)
+            }else {
+                onApiErrorCallback(response.data)
+            }
         })
         .catch(function (error) {
-            console.log(error);
+            onErrorCallback(error);
         });
 }
 export default patients;

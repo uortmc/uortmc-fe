@@ -11,12 +11,14 @@ import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
 import patients from "./requests";
+import alert from "../../utils/alert/alert";
 
 class Patients extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            alert:<div/>,
             hotData: [
                 ["","","","",""]
             ],
@@ -44,22 +46,46 @@ class Patients extends React.Component {
             },
             comments_collumn_settings: {
                 title: "Comments",
-                readOnly: true
+                readOnly: false
 
             }
+
         };
 
-        patients(this.onPatientsResponce.bind(this))
+        patients(
+            this.onPatientsResponce.bind(this),
+            this.onApiErrorResponce.bind(this),
+            this.onErrorResponce.bind(this)
+        )
 
-    }
-    toHotTableCollumn(patient){
-        return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments]
     }
     onPatientsResponce(responce){
         this.setState({
             hotData:responce.map(this.toHotTableCollumn)
         })
+        console.log("OK")
     }
+    onAlertCloseCallback(){
+        this.setState({
+            alert:<div/>
+        })
+    }
+    onApiErrorResponce(responce){
+        this.setState({
+            alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("APIERR")
+    }
+    onErrorResponce(err){
+        this.setState({
+            alert:alert("Operation Failed"+err,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("Err")
+    }
+    toHotTableCollumn(patient){
+        return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments]
+    }
+
     renderTable() {
         return (
                 <HotTable
@@ -79,6 +105,7 @@ class Patients extends React.Component {
 
     render() {
         return <div className="containter">
+            {this.state.alert}
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">

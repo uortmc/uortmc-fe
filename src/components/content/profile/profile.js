@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.svg'
 import style from './profile.css'
 import profile from './requests'
+import alert from "../../utils/alert/alert";
 class Profile extends React.Component{
     constructor(props) {
         super(props);
@@ -15,24 +16,47 @@ class Profile extends React.Component{
             enrolled_date:"",
             last_seen:"",
             online_status:"",
-            tasks:""
+            tasks:"",
+            alert:<div/>
         }
 
-        profile(this.onResponce.bind(this))
+        profile(
+            this.onResponce.bind(this),
+            this.onApiError.bind(this),
+            this.onError.bind(this)
+        )
     }
     onResponce(data){
         this.setState({
-            first_name:data.responce.first_name,
-            last_name:data.responce.last_name,
-            title:data.responce.title,
-            enrolled_date:data.responce.enrolled_date,
-            last_seen:data.responce.last_seen,
-            online_status:data.responce.online_status,
-            tasks:data.responce.tasks
+            first_name:data.first_name,
+            last_name:data.last_name,
+            title:data.title,
+            enrolled_date:data.enrolled_date,
+            last_seen:data.last_seen,
+            online_status:data.online_status,
+            tasks:data.tasks
         })
+    }
+    onAlertCloseCallback(){
+        this.setState({
+            alert:<div/>
+        })
+    }
+    onApiError(responce){
+        this.setState({
+            alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("APIERR")
+    }
+    onError(err){
+        this.setState({
+            alert:alert("Operation Failed "+err,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("Err")
     }
     render() {
         return <div className="container-fluid">
+                {this.state.alert}
                 <div className="row">
                     <div className="card col-12" >
                         <div className="row">
