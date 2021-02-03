@@ -7,10 +7,10 @@ import example_scan from '../../resources/example_scan.jpg'
 import Home from "./home/home";
 import Profile from "./profile/profile";
 import Body from "../../body/body";
-import CompletedTasks from "./completed_tasks/completed_tasks";
-import ScanHistory from "./scan_history/scan_history";
+import CompletedTasks from "./completed_scans/completed_scans";
+import MyScans from "./my_scans/my_scans";
 import Patients from "./patients/patients";
-import NewScan from "./new_scan/new_scan";
+import NewPatient from "./new_patient/new_patient";
 class Content extends React.Component{
     constructor(props) {
         super(props);
@@ -29,11 +29,11 @@ class Content extends React.Component{
             <div className="row">
                 <div className="col-2 tmc_nav_v">
                     <div id="list-example" className="list-group">
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<CompletedTasks/>)} href="#list-item-1">Completed Tasks</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<ScanHistory/>)} href="#list-item-2">Scan History</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<ScanHistory/>)} href="#list-item-3">My Tasks</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewScan/>)} href="#list-item-4">New Scan</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<Patients/>)} href="#list-item-4">Patients</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<CompletedTasks/>)} href="#list-item-1">Completed Scans</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans/>)} href="#list-item-2">New Scan</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans/>)} href="#list-item-3">My Scans</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewPatient/>)} href="#list-item-4">New Patient</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<Patients/>)} href="#list-item-4">My Patients</a>
                     </div>
                 </div>
                 <div className="col-10 ">
