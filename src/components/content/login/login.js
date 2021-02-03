@@ -6,6 +6,8 @@ import example_scan from "../../../resources/example_scan.jpg";
 import style from './login.css'
 
 import Enviroment from "../../../settings";
+import login from "./requests";
+import alert from "../../utils/alert/alert";
 /**
  * LoginStatus
  */
@@ -22,48 +24,40 @@ class Login extends React.Component{
             loginStatus:LoginStatus.NotSubmitted,
             username:"huizhi.liang",
             password:"12345678",
-            triggerAuthorized:props.triggerAuthorized
+            triggerAuthorized:props.triggerAuthorized,
+            alert:<div/>
         }
     }
-    submit(e){
-        console.log(Enviroment.BACKEND_URL)
-        let self=this
-        var axios = require('axios');
-        var qs = require('qs');
-        var data = qs.stringify({
-            'username': this.state.username,
-            'password': this.state.password
-        });
-        var config = {
-            method: 'post',
-            url: Enviroment.BACKEND_URL+'/app/auth/login/',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data : data,
-            withCredentials:true
-        };
-        axios(config)
-            .then(function (response) {
-                self.onResponce(response)
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+    onSuccessLogin(responce){
+        this.state.triggerAuthorized()
+
     }
-    onResponce(responce){
-        if(responce.data.complete){
-            this.setState({
-                loginStatus:LoginStatus.Success
-            })
-            this.state.triggerAuthorized()
-        }
-        else{
-            this.setState({
-                loginStatus:LoginStatus.Fail
-            })
-        }
+    onFailedLogin(responce){
+        this.setState({
+            alert:alert("Login Failed: "+responce.reason,this.onCloseCallback.bind(this))
+        })
+        console.log("Faled")
     }
+    onError(e){
+        this.setState({
+            alert:alert("Login Failed:"+e,this.onCloseCallback.bind(this))
+        })
+    }
+    onCloseCallback(){
+        this.setState({
+            alert:<div/>
+        })
+    }
+    onSubmit(e){
+        login(
+            this.onSuccessLogin.bind(this),
+            this.onFailedLogin.bind(this),
+            this.onError.bind(this),
+            this.state.username,
+            this.state.password)
+
+    }
+
     onUsernameChange(e){
         this.setState({
             username:e.target.value,
@@ -75,15 +69,9 @@ class Login extends React.Component{
         })
     }
     render() {
-        let login_warning=<small id="emailHelp" className="form-text text-muted"/>
-        if(this.state.loginStatus===LoginStatus.Fail){
-            login_warning=<small id="emailHelp" className="form-text text-muted">Username or password wrong</small>
-        }
-        else if(this.state.loginStatus===LoginStatus.Success){
-            login_warning=<small id="emailHelp" className="form-text text-muted">Success</small>
-        }
         return <div>
             <div className="container">
+                {this.state.alert}
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
                     <a className="navbar-brand" href="#">TMC|St Mary's Hospital</a>
@@ -106,14 +94,13 @@ class Login extends React.Component{
                                 <label htmlFor="exampleInputEmail1">Email address</label>
                                 <input type="text" className="form-control" id="exampleInputEmail1"
                                        aria-describedby="emailHelp" value={this.state.username} onChange={this.onUsernameChange.bind(this)} placeholder="Enter email"/>
-                                {login_warning}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Password</label>
                                 <input type="password" className="form-control" value={this.state.password} onChange={this.onPasswordChange.bind(this)} id="exampleInputPassword1"
                                        placeholder="Password"/>
                             </div>
-                            <button type="submit" className="btn btn-primary"  onClick={(e)=>{this.submit(e);e.preventDefault()}}>Log in</button>
+                            <button type="submit" className="btn btn-primary"  onClick={(e)=>{this.onSubmit(e);e.preventDefault()}}>Log in</button>
                         </form>
                     </div>
                     <div className="col-4"/>
