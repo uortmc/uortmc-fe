@@ -47,8 +47,8 @@ class NewPatient extends React.Component{
         }
     }
     verifyForm(){
-        return this.state.firstname.length>5 &&
-            this.state.lastname.length>5 &&
+        return this.state.firstname.length>2 &&
+            this.state.lastname.length>2 &&
             this.state.nino.length===9 &&
             this.ninoregex.test(this.state.nino)
     }
