@@ -8,6 +8,7 @@ import Footer from "../components/footer";
 import Home from "../components/content/home/home";
 import Profile from "../components/content/profile/profile";
 import Login from "../components/content/login/login";
+import Enviroment from "../settings";
 
 
 class CurrentState{
@@ -28,6 +29,10 @@ class Body extends React.Component{
         }
 
     }
+    componentDidMount() {
+        document.title=Enviroment.APP_NAME
+    }
+
     content_element_update(elem){
         this.content_ref.current.setContent(elem)
         this.props.index_update()

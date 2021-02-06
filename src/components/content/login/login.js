@@ -8,6 +8,7 @@ import style from './login.css'
 import Enviroment from "../../../settings";
 import login from "./requests";
 import alert from "../../utils/alert/alert";
+import logo from "../../../resources/logo.png";
 /**
  * LoginStatus
  */
@@ -73,8 +74,9 @@ class Login extends React.Component{
             <div className="container">
                 {this.state.alert}
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-
-                    <a className="navbar-brand" href="#">TMC|St Mary's Hospital</a>
+                    <a className="navbar-brand" href="#">
+                        <img className="tmc_logo" src={logo}/>
+                        TMC|St Mary's Hospital</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false"
