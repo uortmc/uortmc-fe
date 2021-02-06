@@ -6,7 +6,7 @@ import style from './nav.css'
 import Profile from "../content/profile/profile";
 import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";
-
+import logo from '../../resources/logo.png'
 import Requests from "./requests";
 import alert from "../utils/alert/alert";
 class NavBar extends React.Component{
@@ -57,7 +57,9 @@ class NavBar extends React.Component{
     render() {
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <a className="navbar-brand" href="#">TMC|St Mary's Hospital</a>
+            <a className="navbar-brand" href="#">
+                <img className="tmc_logo" src={logo}/>
+                TMC|St Mary's Hospital</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">

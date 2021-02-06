@@ -76,7 +76,6 @@ class Patients extends React.Component {
         this.setState({
             hotData:responce.map(this.toHotTableCollumn)
         })
-        console.log("OK")
     }
     onAlertCloseCallback(){
         this.setState({
