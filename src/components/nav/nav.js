@@ -18,7 +18,11 @@ class NavBar extends React.Component{
             notifications:0,
             alert:<div/>
         }
-        Requests.username(this.onUsernameResponce.bind(this))
+        Requests.username(
+            this.onUsernameResponce.bind(this),
+            this.onApiError.bind(this),
+            this.onError.bind(this)
+        )
         Requests.notifications(
             this.onNotificationsNumberResponce.bind(this),
             this.onApiError.bind(this),
@@ -44,13 +48,11 @@ class NavBar extends React.Component{
         this.setState({
             alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
         })
-        console.log("APIERR")
     }
     onError(err){
         this.setState({
             alert:alert("Operation Failed "+err,this.onAlertCloseCallback.bind(this))
         })
-        console.log("Err")
     }
     render() {
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,7 +73,7 @@ class NavBar extends React.Component{
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Profile/>)}>Profile</a>
                     </li>
                     <li className="nav-item tmc_nav_item">
-                        <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Notifications/>)} >Notifications<span className="badge badge-pill badge-primary">
+                        <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Notifications/>)} >Notifications <span className="badge badge-pill badge-primary">
                             {this.state.notifications}
                         </span>
                         </a>
@@ -80,6 +82,7 @@ class NavBar extends React.Component{
                 <span className="navbar-text">
                     <img className="tmc_user_icon" src={user_img} />
                     <span className="tmc_user_name"> {this.state.username}</span>
+                    {this.state.alert}
                 </span>
             </div>
         </nav>

@@ -153,17 +153,6 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Comments</span>
-                                </div>
-                                <textarea  className="form-control" placeholder="Up to 200 characters"
-                                       aria-label="Username" aria-describedby="basic-addon1"/>
-                            </div>
-                        </form>
-                    </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-4">
                         <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create New Patient</button>
                     </a>
                 </div>
