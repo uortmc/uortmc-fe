@@ -18,7 +18,7 @@ class Requests{
                 console.log(error);
             });
     }
-    static notifications(callback) {
+    static notifications(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
         var config = {
             method: 'get',
             url: Enviroment.BACKEND_URL+'/app/authenticated/getnotifications',
@@ -26,10 +26,14 @@ class Requests{
         };
         axios(config)
             .then(function (response) {
-                callback(response.data.responce.length)
+                if(response.data.complete===true){
+                    onSuccessCallback(response.data.responce.length)
+                }else {
+                    onApiErrorCallback(response.data)
+                }
             })
             .catch(function (error) {
-                console.log(error);
+                onErrorCallback(error);
             });
     }
 }

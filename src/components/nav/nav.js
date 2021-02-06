@@ -8,16 +8,22 @@ import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";
 
 import Requests from "./requests";
+import alert from "../utils/alert/alert";
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state={
             content_element_update:this.props.content_element_update,
             username:"",
-            notifications:0
+            notifications:0,
+            alert:<div/>
         }
         Requests.username(this.onUsernameResponce.bind(this))
-        Requests.notifications(this.onNotificationsNumberResponce.bind(this))
+        Requests.notifications(
+            this.onNotificationsNumberResponce.bind(this),
+            this.onApiError.bind(this),
+            this.onError.bind(this)
+        )
     }
     onUsernameResponce(username){
         this.setState({
@@ -28,6 +34,23 @@ class NavBar extends React.Component{
         this.setState({
             notifications:notifications
         })
+    }
+    onAlertCloseCallback(){
+        this.setState({
+            alert:<div/>
+        })
+    }
+    onApiError(responce){
+        this.setState({
+            alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("APIERR")
+    }
+    onError(err){
+        this.setState({
+            alert:alert("Operation Failed "+err,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("Err")
     }
     render() {
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
