@@ -3,22 +3,45 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import notifications from "./requests";
+import alert from "../../utils/alert/alert";
 
 class Notifications extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            notifications:[]
+            notifications:[],
+            alert:<div/>
         }
 
-        notifications(this.onResponce.bind(this))
+        notifications(
+            this.onResponce.bind(this),
+            this.onApiErrorResponce.bind(this),
+            this.onErrorResponce.bind(this)
+        )
     }
 
     onResponce(responce) {
         this.setState({
-            notifications:responce.responce
+            notifications:responce
         })
-        console.log(responce.responce)
+        console.log(responce)
+    }
+    onApiErrorResponce(responce){
+        this.setState({
+            alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("APIERR")
+    }
+    onErrorResponce(err){
+        this.setState({
+            alert:alert("Operation Failed"+err,this.onAlertCloseCallback.bind(this))
+        })
+        console.log("Err")
+    }
+    onAlertCloseCallback(){
+        this.setState({
+            alert:<div/>
+        })
     }
     renderNotification(notification){
 
@@ -35,7 +58,10 @@ class Notifications extends React.Component{
     }
 
     render() {
-        return this.state.notifications.map(this.renderNotification)
+        return <div className="container">
+            {this.state.alert}
+            {this.state.notifications.map(this.renderNotification) }
+        </div>
     }
 }
 
