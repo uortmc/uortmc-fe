@@ -10,7 +10,7 @@ import style from './patients.css'
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
-import patients from "./requests";
+import PatientsRequests from "./requests";
 import alert from "../../utils/alert/alert";
 
 class Patients extends React.Component {
@@ -46,17 +46,30 @@ class Patients extends React.Component {
             },
             comments_collumn_settings: {
                 title: "Comments",
-                readOnly: false
+                readOnly: false,
+                type:'text',
+                validator:this.commentValidator,
+                onSuccessCallback:undefined,
+                onApiErrorResponce:this.onApiErrorResponce.bind(this),
+                onErrorResponce:this.onErrorResponce.bind(this)
 
             }
 
         };
 
-        patients(
+        PatientsRequests.patients(
             this.onPatientsResponce.bind(this),
             this.onApiErrorResponce.bind(this),
             this.onErrorResponce.bind(this)
         )
+
+    }
+    commentValidator(comment,callback){
+
+        let ninocol=2
+        let nino=this.instance.getData()[this.row][ninocol]
+        PatientsRequests.setComment(()=>{},this.onApiErrorResponce,this.onErrorResponce,nino,comment)
+        callback(true)
 
     }
     onPatientsResponce(responce){
@@ -72,13 +85,13 @@ class Patients extends React.Component {
     }
     onApiErrorResponce(responce){
         this.setState({
-            alert:alert("Operation Failed"+responce.reason,this.onAlertCloseCallback.bind(this))
+            alert:alert("Operation Failed "+responce.reason,this.onAlertCloseCallback.bind(this))
         })
         console.log("APIERR")
     }
     onErrorResponce(err){
         this.setState({
-            alert:alert("Operation Failed"+err,this.onAlertCloseCallback.bind(this))
+            alert:alert("Operation Failed "+err,this.onAlertCloseCallback.bind(this))
         })
         console.log("Err")
     }
