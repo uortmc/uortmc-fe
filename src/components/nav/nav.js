@@ -9,6 +9,8 @@ import Notifications from "../content/notifications/notifications";
 import logo from '../../resources/logo.png'
 import Requests from "./requests";
 import alert from "../utils/alert/alert";
+import About from "../content/about/about";
+
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
@@ -59,7 +61,7 @@ class NavBar extends React.Component{
 
             <a className="navbar-brand" href="#">
                 <img className="tmc_logo" src={logo}/>
-                TMC|St Mary's Hospital</a>
+                UORTMC|St Mary's Hospital</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -79,6 +81,9 @@ class NavBar extends React.Component{
                             {this.state.notifications}
                         </span>
                         </a>
+                    </li>
+                    <li className="nav-item tmc_nav_item">
+                        <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<About/>)} >About</a>
                     </li>
                 </ul>
                 <span className="navbar-text">
