@@ -19,6 +19,7 @@ class Patients extends React.Component {
 
         this.state = {
             alert:<div/>,
+            search:"",
             hotData: [
                 ["","","","",""]
             ],
@@ -73,8 +74,10 @@ class Patients extends React.Component {
 
     }
     onPatientsResponce(responce){
+        let data=responce.map(this.toHotTableCollumn)
         this.setState({
-            hotData:responce.map(this.toHotTableCollumn)
+            data:data,
+            hotData:data
         })
     }
     onAlertCloseCallback(){
@@ -97,7 +100,17 @@ class Patients extends React.Component {
     toHotTableCollumn(patient){
         return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments]
     }
-
+    onSearchChange(e){
+        this.setState({
+            search:e.target.value
+        })
+    }
+    onSearch(e){
+        let data = this.state.data.filter(e=>e[2].startsWith(this.state.search))
+        this.setState({
+            hotData:data
+        })
+    }
     renderTable() {
         return (
                 <HotTable
@@ -114,15 +127,14 @@ class Patients extends React.Component {
                 </HotTable>
         );
     }
-
     render() {
         return <div className="containter">
             {this.state.alert}
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Type a name or an ID" aria-label="Search"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search by NINO" value={this.state.search} onChange={this.onSearchChange.bind(this)} aria-label="Search"/>
+                            <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.onSearch.bind(this)} type="submit">Search
                             </button>
 
                     </form>
