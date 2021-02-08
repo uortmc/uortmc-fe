@@ -106,6 +106,7 @@ class Patients extends React.Component {
         })
     }
     onSearch(e){
+        e.preventDefault();
         let data = this.state.data.filter(e=>e[2].startsWith(this.state.search))
         this.setState({
             hotData:data
