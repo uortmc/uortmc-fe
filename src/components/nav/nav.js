@@ -61,7 +61,7 @@ class NavBar extends React.Component{
 
             <a className="navbar-brand" href="#">
                 <img className="tmc_logo" src={logo}/>
-                UORTMC|St Mary's Hospital</a>
+                UORTMC|Royal Berkshire Hospital</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
