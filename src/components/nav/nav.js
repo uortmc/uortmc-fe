@@ -10,7 +10,7 @@ import logo from '../../resources/logo.png'
 import Requests from "./requests";
 import alert from "../utils/alert/alert";
 import About from "../content/about/about";
-
+import notificationSound from '../../resources/notification.wav';
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
@@ -18,7 +18,9 @@ class NavBar extends React.Component{
             content_element_update:this.props.content_element_update,
             username:"",
             notifications:0,
-            alert:<div/>
+            alert:<div/>,
+            intervalID:undefined,
+            sound:notificationSound
         }
         Requests.username(
             this.onUsernameResponce.bind(this),
@@ -31,12 +33,39 @@ class NavBar extends React.Component{
             this.onError.bind(this)
         )
     }
+    componentDidMount() {
+        let intervalID=setInterval(()=>{
+            Requests.notifications(
+                this.onNotificationsNumberResponce.bind(this),
+                this.onApiError.bind(this),
+                this.onError.bind(this)
+        )},3000)
+        this.setState({
+            intervalID:intervalID
+        })
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.intervalID)
+    }
+
     onUsernameResponce(username){
         this.setState({
             username:username
         })
     }
+    notificationSoundComponent(){
+        return <audio className="audio-element">
+            <source src={notificationSound}/>
+        </audio>
+    }
+    playNotificationSoundComponent(){
+        const audioEl = document.getElementsByClassName("audio-element")[0]
+        audioEl.play()
+    }
     onNotificationsNumberResponce(notifications){
+        if(this.state.notifications!==notifications && this.state.notifications!==0){
+            this.playNotificationSoundComponent()
+        }
         this.setState({
             notifications:notifications
         })
@@ -58,7 +87,7 @@ class NavBar extends React.Component{
     }
     render() {
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
-
+            {this.notificationSoundComponent()}
             <a className="navbar-brand" href="#">
                 <img className="tmc_logo" src={logo}/>
                 UORTMC|Royal Berkshire Hospital</a>
