@@ -11,6 +11,7 @@ import CompletedTasks from "./completed_scans/completed_scans";
 import MyScans from "./my_scans/my_scans";
 import Patients from "./patients/patients";
 import NewPatient from "./new_patient/new_patient";
+import NewScan from "./new_scan/new_scan";
 class Content extends React.Component{
     constructor(props) {
         super(props);
@@ -30,7 +31,7 @@ class Content extends React.Component{
                 <div className="col-2 tmc_nav_v">
                     <div id="list-example" className="list-group">
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<CompletedTasks/>)} href="#list-item-1">Completed Scans</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans/>)} href="#list-item-2">New Scan</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewScan/>)} href="#list-item-2">New Scan</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans/>)} href="#list-item-3">My Scans</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewPatient/>)} href="#list-item-4">New Patient</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<Patients/>)} href="#list-item-4">My Patients</a>
