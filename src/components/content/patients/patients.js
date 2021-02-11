@@ -23,6 +23,9 @@ class Patients extends React.Component {
             hotData: [
                 ["","","","",""]
             ],
+            data:[
+                ["","","","",""]
+            ],
             table_conf:{
                 width: '100%',
                 stretchV:"all",

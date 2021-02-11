@@ -7,26 +7,16 @@ import user_img from '../../../resources/user.png'
 import alert from "../../utils/alert/alert";
 import Toast from 'react-bootstrap/Toast';
 import scan_img from '../../../resources/scan.png'
+import NinoVerifier from "../../../etc/utils";
+import new_scan from "./requests";
 class NewScan extends React.Component{
     constructor(props) {
         super(props);
-        this.ninoregex=new RegExp('[A-Z]{2}[1-9]{6}[A-Z]')
+        this.ninoregex=new NinoVerifier()
         this.state={
-            firstname:"",
-            lastname:"",
             nino:"",
             alert:<div/>
         }
-    }
-    onFirstNameChange(e){
-        this.setState({
-            firstname:e.target.value
-        })
-    }
-    onLastNameChange(e){
-        this.setState({
-            lastname:e.target.value
-        })
     }
     onNinoChange(e){
         this.setState({
@@ -37,14 +27,15 @@ class NewScan extends React.Component{
         if(!this.verifyForm()){
             this.onGenericFailure("Please insert valid values on the respective inputs")
         }else {
-            //???
+            new_scan(
+                this.onSuccess.bind(this),
+                this.onAPIFailure.bind(this),
+                this.onGenericFailure.bind(this),
+                this.state.nino)
         }
     }
     verifyForm(){
-        return this.state.firstname.length>2 &&
-            this.state.lastname.length>2 &&
-            this.state.nino.length===9 &&
-            this.ninoregex.test(this.state.nino)
+        return this.ninoregex.verify(this.state.nino)
     }
     onSuccess(responce){
         this.setState({
@@ -97,33 +88,12 @@ class NewScan extends React.Component{
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="basic-addon1">Type</span>
                                 </div>
-                                <input type="text" className="form-control" disabled placeholder="Patient"
+                                <input type="text" className="form-control" disabled placeholder="Scan"
                                        aria-label="Username" aria-describedby="basic-addon1"/>
                             </div>
                         </form>
                     </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-3">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">First name</span>
-                                </div>
-                                <input type="text" className="form-control"
-                                       aria-label="Username" aria-describedby="basic-addon1" onChange={this.onFirstNameChange.bind(this)}/>
-                            </div>
-                        </form>
-                    </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-3">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Last name</span>
-                                </div>
-                                <input type="text" className="form-control"
-                                       aria-label="Username" aria-describedby="basic-addon1" onChange={this.onLastNameChange.bind(this)}/>
-                            </div>
-                        </form>
-                    </a>
+
                     <a className="list-group-item list-group-item-action" href="#list-item-2">
                         <form className="form-inline">
                             <div className="input-group">
@@ -139,15 +109,25 @@ class NewScan extends React.Component{
                         <form className="form-inline">
                             <div className="input-group">
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Nino</span>
+                                    <span className="input-group-text" id="basic-addon1">Patient's nino</span>
                                 </div>
                                 <input type="text" className="form-control" placeholder="AA123456C"
                                        aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)}/>
                             </div>
                         </form>
                     </a>
+                    <a className="list-group-item list-group-item-action" href="#list-item-3">
+                        <form className="form-inline">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">Scan Image</span>
+                                </div>
+                                <input className="form-control" type="file" id="formFileDisabled"/>
+                            </div>
+                        </form>
+                    </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create New Patient</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Submit new Scan</button>
                     </a>
                 </div>
             </div>
