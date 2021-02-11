@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../../resources/user.svg'
+import user_img from '../../../resources/user.png'
 import style from './profile.css'
 import profile from './requests'
 import alert from "../../utils/alert/alert";
@@ -61,7 +61,7 @@ class Profile extends React.Component{
                     <div className="card col-12" >
                         <div className="row">
                             <div className="col-4">
-                                <img src={user_img} alt="ABC" className="tmc_user_img_profile"/>
+                                <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
                             </div>
                             <div className="col-8">
                                 <div className="card-body">
