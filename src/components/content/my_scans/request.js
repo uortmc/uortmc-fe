@@ -6,7 +6,7 @@ class ScansRequests{
     static scans(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
         var config = {
             method: 'get',
-            url: Enviroment.BACKEND_URL+'/app/authenticated/getscans',
+            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/getscans',
             withCredentials:true
         };
         axios(config)
@@ -31,7 +31,7 @@ class ScansRequests{
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            url: Enviroment.BACKEND_URL+'/app/authenticated/scansetcomment',
+            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/scansetcomment',
             withCredentials:true,
             data:form
         };

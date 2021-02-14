@@ -51,10 +51,6 @@ class Patients extends React.Component {
                 title:"Status",
                 readOnly:true
             },
-            algorithm_collumn_settings:{
-                title:"Algorithm",
-                readOnly:true
-            },
             id_collumn_settings:{
                 title:"Identifier",
                 readOnly:true
@@ -77,7 +73,7 @@ class Patients extends React.Component {
         function buttonOnClick(scan){
             console.log(scan)
         }
-        if(col!==7) return Handsontable.renderers.TextRenderer.apply(this,arguments)
+        if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
             let button = document.createElement("BUTTON")
             button.innerText="Details"
@@ -93,9 +89,8 @@ class Patients extends React.Component {
             scan.ascPatient.first_name,
             scan.ascPatient.last_name,
             scan.ascPatient.nino,scan.created,
-            scan.status,scan.algorithm,
-            scan.token.toString().split("-")[0]+"...",
-            scan.token]
+            scan.status,
+            scan.token.toString().split("-")[0]+"...",""]
     }
     onScansResponce(responce){
         let data=responce.map(this.toHotTableCollumn.bind(this))
@@ -148,7 +143,6 @@ class Patients extends React.Component {
                 <HotColumn settings={this.state.nino_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.created_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.status_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.algorithm_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.id_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.action_collumn_settings} className="tmc_hot_collumn"/>
             </HotTable>
