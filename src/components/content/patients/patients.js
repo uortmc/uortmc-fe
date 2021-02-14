@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CompletedTasks from "../completed_scans/completed_scans";
-import MyScans from "../my_scans/my_scans";
 import Profile from "../profile/profile";
 import style from './patients.css'
 
@@ -12,11 +11,12 @@ import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
 import PatientsRequests from "./requests";
 import alert from "../../utils/alert/alert";
+import PatientView from "../patient_view/patient_view";
 
 class Patients extends React.Component {
     constructor(props) {
         super(props);
-
+        this.setContent=props.setContent
         this.state = {
             alert:<div/>,
             search:"",
@@ -57,6 +57,11 @@ class Patients extends React.Component {
                 onApiErrorResponce:this.onApiErrorResponce.bind(this),
                 onErrorResponce:this.onErrorResponce.bind(this)
 
+            },
+            action_collumn_settings:{
+                title:"Action",
+                readOnly:true,
+                setContent:this.setContent
             }
 
         };
@@ -67,6 +72,21 @@ class Patients extends React.Component {
             this.onErrorResponce.bind(this)
         )
 
+    }
+    scanRenderer(instance, td, row, col, prop, value, cellProperties) {
+        function buttonOnClick(scan){
+            cellProperties.setContent(<PatientView/>)
+        }
+        if(col!==5) return Handsontable.renderers.TextRenderer.apply(this,arguments)
+        if(td.children.length<1){
+            let button = document.createElement("BUTTON")
+            button.innerText="Details"
+            button.classList.add("btn")
+            button.classList.add("btn-outline-primary")
+            button.addEventListener("click", (e)=>{e.preventDefault();buttonOnClick(instance.getDataAtCell(row,2))});
+            td.appendChild(button)
+        }
+        return td
     }
     commentValidator(comment,callback){
 
@@ -101,7 +121,7 @@ class Patients extends React.Component {
         console.log("Err")
     }
     toHotTableCollumn(patient){
-        return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments]
+        return [patient.first_name,patient.last_name,patient.nino,patient.enrolled_date,patient.comments,""]
     }
     onSearchChange(e){
         this.setState({
@@ -121,13 +141,15 @@ class Patients extends React.Component {
                     data={this.state.hotData}
                     licenseKey="non-commercial-and-evaluation"
                     settings={this.state.table_conf}
-                    className="tmc_hot_table">
+                    className="tmc_hot_table"
+                    renderer={this.scanRenderer}>
 
                     <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.lastname_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.nino_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.enrolled_collumn_settings} className="tmc_hot_collumn"/>
                     <HotColumn settings={this.state.comments_collumn_settings} className="tmc_hot_collumn"/>
+                    <HotColumn settings={this.state.action_collumn_settings} className="tmc_hot_collumn"/>
                 </HotTable>
         );
     }

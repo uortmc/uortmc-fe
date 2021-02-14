@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class CompletedTasks extends React.Component{
+class PatientView extends React.Component{
     constructor(props) {
         super(props);
     }
@@ -85,4 +85,4 @@ class CompletedTasks extends React.Component{
 }
 
 
-export default CompletedTasks;
+export default PatientView;

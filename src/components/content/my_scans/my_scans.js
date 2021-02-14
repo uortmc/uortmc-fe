@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CompletedTasks from "../completed_scans/completed_scans";
-import MyScans from "../my_scans/my_scans";
 import Profile from "../profile/profile";
 import style from './my_scans.css'
 
@@ -13,12 +12,14 @@ import "handsontable/dist/handsontable.min.css";
 
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
+import PatientView from "../patient_view/patient_view";
 
-class Patients extends React.Component {
+class MyScans extends React.Component {
     constructor(props) {
         super(props);
-
+        this.setContent=props.setContent
         this.state = {
+
             alert:<div/>,
             search:"",
             hotData: [
@@ -57,7 +58,8 @@ class Patients extends React.Component {
             },
             action_collumn_settings: {
                 title: "Action",
-                readOnly: true
+                readOnly: true,
+                setContent:this.setContent
             }
 
         };
@@ -71,7 +73,7 @@ class Patients extends React.Component {
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
         function buttonOnClick(scan){
-            console.log(scan)
+            cellProperties.setContent(<PatientView/>)
         }
         if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
@@ -171,4 +173,4 @@ class Patients extends React.Component {
 }
 
 
-export default Patients;
+export default MyScans;
