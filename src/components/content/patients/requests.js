@@ -6,7 +6,7 @@ class PatientsRequests{
     static patients(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
         var config = {
             method: 'get',
-            url: Enviroment.BACKEND_URL+'/app/authenticated/getpatients',
+            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/getpatients',
             withCredentials:true
         };
         axios(config)
@@ -31,7 +31,7 @@ class PatientsRequests{
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            url: Enviroment.BACKEND_URL+'/app/authenticated/setcomment',
+            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/setcomment',
             withCredentials:true,
             data:form
         };

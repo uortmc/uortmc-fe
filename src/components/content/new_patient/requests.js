@@ -13,7 +13,7 @@ function new_patient(callback_success,callback_api_err,callback_err,first_name,l
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        url: Enviroment.BACKEND_URL+'/app/authenticated/addpatient',
+        url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/addpatient',
         withCredentials:true,
         data:form
     };

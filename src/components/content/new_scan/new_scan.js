@@ -9,12 +9,14 @@ import Toast from 'react-bootstrap/Toast';
 import scan_img from '../../../resources/scan.png'
 import NinoVerifier from "../../../etc/utils";
 import new_scan from "./requests";
+import NewScanRequests from "./requests";
 class NewScan extends React.Component{
     constructor(props) {
         super(props);
         this.ninoregex=new NinoVerifier()
         this.state={
             nino:"",
+            algorithm:"SCV",
             alert:<div/>
         }
     }
@@ -23,12 +25,18 @@ class NewScan extends React.Component{
             nino:e.target.value
         })
     }
+    onSelectedAlgorithmChange(e){
+        this.setState({
+            algorithm:e.target.value
+        })
+        console.log(e.target.value)
+    }
     onSubmit(e){
         if(!this.verifyForm()){
             this.onGenericFailure("Please insert valid values on the respective inputs")
         }else {
-            new_scan(
-                this.onSuccess.bind(this),
+            NewScanRequests.new_scan_infobe(
+                this.onSuccessGetToken.bind(this),
                 this.onAPIFailure.bind(this),
                 this.onGenericFailure.bind(this),
                 this.state.nino)
@@ -37,11 +45,18 @@ class NewScan extends React.Component{
     verifyForm(){
         return this.ninoregex.verify(this.state.nino)
     }
+    onSuccessGetToken(responce){
+        NewScanRequests.new_scan_taskbe(
+            this.onSuccess.bind(this),
+            this.onAPIFailure.bind(this),
+            this.onGenericFailure.bind(this),
+            responce.responce.token)
+    }
     onSuccess(responce){
         this.setState({
             alert:alert("Operation Completed",this.onCloseCallback.bind(this))
         })
-        console.log(responce)
+
     }
     onAPIFailure(responce){
         this.setState({
@@ -113,6 +128,20 @@ class NewScan extends React.Component{
                                 </div>
                                 <input type="text" className="form-control" placeholder="AA123456C"
                                        aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)}/>
+                            </div>
+                        </form>
+                    </a>
+                    <a className="list-group-item list-group-item-action" href="#list-item-3">
+                        <form className="form-inline">
+                            <div className="input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text" id="basic-addon1">Algorithm</span>
+                                </div>
+                                <div className="form-group">
+                                    <select className="form-control" id="exampleFormControlSelect1" onChange={(e)=>{e.preventDefault();this.onSelectedAlgorithmChange(e)}}>
+                                        <option value="SCV">(SCV) Simple C-Support Vector Machine v1</option>
+                                    </select>
+                                </div>
                             </div>
                         </form>
                     </a>

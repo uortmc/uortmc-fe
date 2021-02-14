@@ -5,7 +5,7 @@ var qs = require('qs');
 function profile(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
     var config = {
         method: 'get',
-        url: Enviroment.BACKEND_URL+'/app/authenticated/profile',
+        url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/profile',
         withCredentials:true
     };
     axios(config)

@@ -7,7 +7,7 @@ import Body from "./body/body";
 import Enviroment from "./settings";
 
 function start(){
-    console.log("Pointing to "+Enviroment.BACKEND_URL)
+    console.log("Pointing to "+Enviroment.INFO_BACKEND_URL)
     var main=<Body index_update={start}/>
     ReactDom.render(
         main,

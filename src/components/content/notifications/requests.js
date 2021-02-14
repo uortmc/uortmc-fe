@@ -5,7 +5,7 @@ var qs = require('qs');
 function notifications(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
     var config = {
         method: 'get',
-        url: Enviroment.BACKEND_URL+'/app/authenticated/getnotifications',
+        url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/getnotifications',
         withCredentials:true
     };
     axios(config)

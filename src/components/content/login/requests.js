@@ -9,7 +9,7 @@ function login(onSuccessCallback,onApiErrorCallback,onErrorCallback,username,pas
     });
     var config = {
         method: 'post',
-        url: Enviroment.BACKEND_URL+'/app/auth/login/',
+        url: Enviroment.INFO_BACKEND_URL+'/app/auth/login/',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
