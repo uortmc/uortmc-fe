@@ -28,7 +28,7 @@ class MyScans extends React.Component {
             ],
             table_conf:{
                 width: '100%',
-                stretchV:"all",
+                stretchH:"all"
 
             },
             firstname_collumn_settings: {
@@ -137,7 +137,6 @@ class MyScans extends React.Component {
                 data={this.state.hotData}
                 licenseKey="non-commercial-and-evaluation"
                 settings={this.state.table_conf}
-                className="tmc_hot_table"
                 renderer={this.scanRenderer}>
 
                 <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
@@ -164,7 +163,7 @@ class MyScans extends React.Component {
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12">
+                <div className="col-12 tmc_hot_table_area">
                     {this.renderTable()}
                 </div>
             </div>

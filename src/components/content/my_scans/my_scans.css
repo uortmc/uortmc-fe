@@ -4,6 +4,7 @@
 .tmc_patient_search{
     align-content: center;
 }
-.tmc_hot_table{
+.tmc_hot_table_area{
     width:100%;
+    padding: 0px;
 }
