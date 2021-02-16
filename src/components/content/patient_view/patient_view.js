@@ -13,15 +13,16 @@ import setComment from "./requests";
 
 
 class PatientView extends React.Component {
+
     constructor(props) {
         super(props);
+        this.setContent=this.props.setContent
         this.state={
             first_name:this.props.first_name,
             last_name:this.props.last_name,
             nino:this.props.nino,
             comments:this.props.comments,
             enrolled_date:this.props.enrolled_date,
-            setContent:this.props.setContent,
             alert:<div/>
         }
     }
@@ -36,7 +37,7 @@ class PatientView extends React.Component {
         )
     }
     onViewScansSubmit(e){
-        this.state.setContent(<MyScans search={this.state.nino}/>)
+        this.setContent(<MyScans search={this.state.nino} setContent={this.setContent}/>)
     }
     onCommentChange(e){
         console.log("Hello")
