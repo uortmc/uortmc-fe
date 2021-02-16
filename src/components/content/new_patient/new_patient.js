@@ -98,57 +98,57 @@ class NewPatient extends React.Component{
             <div className="row">
                 <div id="list-example" className="list-group col-12">
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Type</span>
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">Type</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder="Patient"
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
-                                <input type="text" className="form-control" disabled placeholder="Patient"
-                                       aria-label="Username" aria-describedby="basic-addon1"/>
                             </div>
                         </form>
                     </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-3">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">First name</span>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">First name</span>
+                                    <input type="text" className="form-control col-10" placeholder=""
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onFirstNameChange.bind(this)}/>
                                 </div>
-                                <input type="text" className="form-control"
-                                       aria-label="Username" aria-describedby="basic-addon1" onChange={this.onFirstNameChange.bind(this)}/>
                             </div>
                         </form>
                     </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-3">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Last name</span>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">Last name</span>
+                                    <input type="text" className="form-control col-10" placeholder=""
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onLastNameChange.bind(this)} />
                                 </div>
-                                <input type="text" className="form-control"
-                                       aria-label="Username" aria-describedby="basic-addon1" onChange={this.onLastNameChange.bind(this)}/>
                             </div>
                         </form>
                     </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-2">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Enrolled Date</span>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">Nino</span>
+                                    <input type="text" className="form-control col-10" placeholder="AA123456C"
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)} />
                                 </div>
-                                <input type="text" className="form-control" disabled placeholder={new Date().toDateString()}
-                                       aria-label="Username" aria-describedby="basic-addon1"/>
                             </div>
                         </form>
                     </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-3">
-                        <form className="form-inline">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" id="basic-addon1">Nino</span>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
-                                <input type="text" className="form-control" placeholder="AA123456C"
-                                       aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)}/>
                             </div>
                         </form>
                     </a>

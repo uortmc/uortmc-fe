@@ -2,61 +2,53 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../../resources/user.png'
-
-import alert from "../../utils/alert/alert";
-import Toast from 'react-bootstrap/Toast';
-import scan_img from '../../../resources/scan.png'
 import NinoVerifier from "../../../etc/utils";
-import new_scan from "./requests";
-import NewScanRequests from "./requests";
-class NewScan extends React.Component{
+import NewScanRequests from "../new_scan/requests";
+import alert from "../../utils/alert/alert";
+import scan_img from "../../../resources/scan.png";
+import new_patient from "../new_patient/requests";
+import user_img from "../../../resources/user.png";
+import MyScans from "../my_scans/my_scans";
+import setComment from "./requests";
+
+
+class PatientView extends React.Component {
     constructor(props) {
         super(props);
-        this.ninoregex=new NinoVerifier()
         this.state={
-            nino:"",
-            algorithm:"SCV",
+            first_name:this.props.first_name,
+            last_name:this.props.last_name,
+            nino:this.props.nino,
+            comments:this.props.comments,
+            enrolled_date:this.props.enrolled_date,
+            setContent:this.props.setContent,
             alert:<div/>
         }
     }
-    onNinoChange(e){
-        this.setState({
-            nino:e.target.value
-        })
-    }
-    onSelectedAlgorithmChange(e){
-        this.setState({
-            algorithm:e.target.value
-        })
-        console.log(e.target.value)
-    }
-    onSubmit(e){
-        if(!this.verifyForm()){
-            this.onGenericFailure("Please insert valid values on the respective inputs")
-        }else {
-            NewScanRequests.new_scan_infobe(
-                this.onSuccessGetToken.bind(this),
-                this.onAPIFailure.bind(this),
-                this.onGenericFailure.bind(this),
-                this.state.nino)
-        }
-    }
-    verifyForm(){
-        return this.ninoregex.verify(this.state.nino)
-    }
-    onSuccessGetToken(responce){
-        NewScanRequests.new_scan_taskbe(
+
+    onSubmit(e) {
+        setComment(
             this.onSuccess.bind(this),
             this.onAPIFailure.bind(this),
             this.onGenericFailure.bind(this),
-            responce.responce.token)
+            this.state.nino,
+            this.state.comments
+        )
+    }
+    onViewScansSubmit(e){
+        this.state.setContent(<MyScans search={this.state.nino}/>)
+    }
+    onCommentChange(e){
+        console.log("Hello")
+        this.setState({
+            comments:e.target.value
+        })
     }
     onSuccess(responce){
         this.setState({
             alert:alert("Operation Completed",this.onCloseCallback.bind(this))
         })
-
+        console.log(responce)
     }
     onAPIFailure(responce){
         this.setState({
@@ -75,7 +67,6 @@ class NewScan extends React.Component{
             alert:<div/>
         })
     }
-
     render() {
         return <div className="container-fluid">
             {this.state.alert}
@@ -83,12 +74,12 @@ class NewScan extends React.Component{
                 <div className="card col-12" >
                     <div className="row">
                         <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
+                            <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
                         </div>
                         <div className="col-8">
                             <div className="card-body">
                                 <h2 className="card-title">
-                                    Scan Submission Form
+                                    Patient View
                                 </h2>
                             </div>
                         </div>
@@ -102,7 +93,18 @@ class NewScan extends React.Component{
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Type</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder="Scan"
+                                    <input type="text" className="form-control col-10" disabled placeholder="Patient"
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                            </div>
+                        </form>
+                    </a>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">First name</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.first_name}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
@@ -112,8 +114,8 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Created Date</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
+                                    <span className="input-group-text col-2" id="basic-addon1">Last name</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.last_name}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
@@ -123,9 +125,9 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Patient's nino</span>
-                                    <input type="text" className="form-control col-10" placeholder="AA123456C"
-                                           onChange={this.onNinoChange.bind(this)} aria-label="Username" aria-describedby="basic-addon1"/>
+                                    <span className="input-group-text col-2" id="basic-addon1">Nino</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.nino}
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
                         </form>
@@ -134,10 +136,9 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Algorithm</span>
-                                        <select className="form-control col-10 " id="exampleFormControlSelect1" onChange={(e)=>{e.preventDefault();this.onSelectedAlgorithmChange(e)}}>
-                                            <option value="SCV">(SCV) Simple C-Support Vector Machine v1</option>
-                                        </select>
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
                         </form>
@@ -146,15 +147,18 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Scan Image</span>
-                                    <input className="form-control col-10" type="file" id="formFileDisabled"/>
+                                    <span className="input-group-text col-2" id="basic-addon1">Comments</span>
+                                    <textarea className="form-control col-10" value={this.state.comments}
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onCommentChange.bind(this)}/>
                                 </div>
                             </div>
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Submit new Scan</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save Changes</button>
+                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View Scans</button>
                     </a>
+
                 </div>
             </div>
         </div>
@@ -162,4 +166,4 @@ class NewScan extends React.Component{
 }
 
 
-export default NewScan;
+export default PatientView;

@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CompletedTasks from "../completed_scans/completed_scans";
-import MyScans from "../my_scans/my_scans";
 import Profile from "../profile/profile";
 import style from './my_scans.css'
 
@@ -13,21 +12,23 @@ import "handsontable/dist/handsontable.min.css";
 
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
+import PatientView from "../patient_view/patient_view";
 
-class Patients extends React.Component {
+class MyScans extends React.Component {
     constructor(props) {
         super(props);
-
+        this.setContent=props.setContent
         this.state = {
+
             alert:<div/>,
-            search:"",
+            search:this.props.search,
             hotData: [
             ],
             data:[
             ],
             table_conf:{
                 width: '100%',
-                stretchV:"all",
+                stretchH:"all"
 
             },
             firstname_collumn_settings: {
@@ -57,10 +58,17 @@ class Patients extends React.Component {
             },
             action_collumn_settings: {
                 title: "Action",
-                readOnly: true
+                readOnly: true,
+                setContent:this.setContent
             }
 
         };
+        this.initializeSearch()
+    }
+    initializeSearch(){
+        if(this.state.search!==""){
+            this.alterSearchState()
+        }
     }
     componentDidMount() {
         ScansRequests.scans(
@@ -71,7 +79,7 @@ class Patients extends React.Component {
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
         function buttonOnClick(scan){
-            console.log(scan)
+            //cellProperties.setContent(<PatientView/>)
         }
         if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
@@ -98,6 +106,7 @@ class Patients extends React.Component {
             data:data,
             hotData:data
         })
+        this.initializeSearch()
     }
     onAlertCloseCallback(){
         this.setState({
@@ -124,6 +133,9 @@ class Patients extends React.Component {
     }
     onSearch(e){
         e.preventDefault();
+        this.alterSearchState()
+    }
+    alterSearchState(){
         let data = this.state.data.filter(e=>e[2].startsWith(this.state.search))
         this.setState({
             hotData:data
@@ -135,7 +147,6 @@ class Patients extends React.Component {
                 data={this.state.hotData}
                 licenseKey="non-commercial-and-evaluation"
                 settings={this.state.table_conf}
-                className="tmc_hot_table"
                 renderer={this.scanRenderer}>
 
                 <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
@@ -162,7 +173,7 @@ class Patients extends React.Component {
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12">
+                <div className="col-12 tmc_hot_table_area">
                     {this.renderTable()}
                 </div>
             </div>
@@ -171,4 +182,4 @@ class Patients extends React.Component {
 }
 
 
-export default Patients;
+export default MyScans;
