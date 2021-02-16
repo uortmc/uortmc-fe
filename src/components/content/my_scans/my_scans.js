@@ -13,6 +13,7 @@ import "handsontable/dist/handsontable.min.css";
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
 import PatientView from "../patient_view/patient_view";
+import ScanView from "../scan_view/scan_view";
 
 class MyScans extends React.Component {
     constructor(props) {
@@ -79,7 +80,7 @@ class MyScans extends React.Component {
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
         function buttonOnClick(scan){
-            //cellProperties.setContent(<PatientView/>)
+            cellProperties.setContent(<ScanView/>)
         }
         if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
