@@ -8,22 +8,28 @@ import alert from "../../utils/alert/alert";
 import scan_img from "../../../resources/scan.png";
 import new_patient from "../new_patient/requests";
 import user_img from "../../../resources/user.png";
+import MyScans from "../my_scans/my_scans";
 
 
 class PatientView extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            firstName:"",
-            lastName:"",
-            nino:props.nino,
-            comments:"",
-            enrolledDate:"",
+            first_name:this.props.first_name,
+            last_name:this.props.last_name,
+            nino:this.props.nino,
+            comments:this.props.comments,
+            enrolled_date:this.props.enrolled_date,
+            setContent:this.props.setContent,
             alert:<div/>
         }
     }
+
     onSubmit(e) {
 
+    }
+    onViewScansSubmit(e){
+        this.state.setContent(<MyScans search={this.state.nino}/>)
     }
     onSuccess(responce){
         this.setState({
@@ -48,7 +54,6 @@ class PatientView extends React.Component {
             alert:<div/>
         })
     }
-
     render() {
         return <div className="container-fluid">
             {this.state.alert}
@@ -86,7 +91,7 @@ class PatientView extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">First name</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder=""
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.first_name}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
@@ -97,18 +102,7 @@ class PatientView extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Last name</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder=""
-                                           aria-label="Username" aria-describedby="basic-addon1"/>
-                                </div>
-                            </div>
-                        </form>
-                    </a>
-                    <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
-                            <div className="container">
-                                <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder=""
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.last_name}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
@@ -119,7 +113,18 @@ class PatientView extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Nino</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder=""
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.nino}
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                </div>
+                            </div>
+                        </form>
+                    </a>
+                    <a className="list-group-item list-group-item-action" href="#list-item-1">
+                        <form className="form-inline tmc_form_fullspan">
+                            <div className="container">
+                                <div className="row">
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
@@ -130,15 +135,17 @@ class PatientView extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Comments</span>
-                                    <textarea type="text" className="form-control col-10" placeholder=""
+                                    <textarea type="text" className="form-control col-10" value={this.state.comments}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create New Patient</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save Changes</button>
+                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View Scans</button>
                     </a>
+
                 </div>
             </div>
         </div>

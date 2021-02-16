@@ -21,7 +21,7 @@ class MyScans extends React.Component {
         this.state = {
 
             alert:<div/>,
-            search:"",
+            search:this.props.search,
             hotData: [
             ],
             data:[
@@ -63,6 +63,12 @@ class MyScans extends React.Component {
             }
 
         };
+        this.initializeSearch()
+    }
+    initializeSearch(){
+        if(this.state.search!==""){
+            this.alterSearchState()
+        }
     }
     componentDidMount() {
         ScansRequests.scans(
@@ -73,7 +79,7 @@ class MyScans extends React.Component {
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
         function buttonOnClick(scan){
-            cellProperties.setContent(<PatientView/>)
+            //cellProperties.setContent(<PatientView/>)
         }
         if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
@@ -100,6 +106,7 @@ class MyScans extends React.Component {
             data:data,
             hotData:data
         })
+        this.initializeSearch()
     }
     onAlertCloseCallback(){
         this.setState({
@@ -126,6 +133,9 @@ class MyScans extends React.Component {
     }
     onSearch(e){
         e.preventDefault();
+        this.alterSearchState()
+    }
+    alterSearchState(){
         let data = this.state.data.filter(e=>e[2].startsWith(this.state.search))
         this.setState({
             hotData:data

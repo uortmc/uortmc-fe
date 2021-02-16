@@ -32,7 +32,7 @@ class Content extends React.Component{
                     <div id="list-example" className="list-group">
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<CompletedTasks setContent={this.setContent.bind(this)}/>)} href="#list-item-1">Completed Scans</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewScan setContent={this.setContent.bind(this)}/>)} href="#list-item-2">New Scan</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans setContent={this.setContent.bind(this)}/>)} href="#list-item-3">My Scans</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans search="" setContent={this.setContent.bind(this)}/>)} href="#list-item-3">My Scans</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewPatient setContent={this.setContent.bind(this)}/>)} href="#list-item-4">New Patient</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<Patients setContent={this.setContent.bind(this)}/>)} href="#list-item-4">My Patients</a>
                     </div>

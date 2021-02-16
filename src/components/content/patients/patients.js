@@ -73,7 +73,8 @@ class Patients extends React.Component {
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
         function buttonOnClick(scan){
-            cellProperties.setContent(<PatientView/>)
+            cellProperties.setContent(
+                <PatientView first_name="Stefanos" last_name="Stefanou" enrolled_date="Today" nino="AA123456B" comments="Not Set" setContent={cellProperties.setContent}/>)
         }
         if(col!==5) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){

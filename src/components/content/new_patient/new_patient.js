@@ -134,9 +134,9 @@ class NewPatient extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
-                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                    <span className="input-group-text col-2" id="basic-addon1">Nino</span>
+                                    <input type="text" className="form-control col-10" placeholder="AA123456C"
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)} />
                                 </div>
                             </div>
                         </form>
@@ -145,9 +145,9 @@ class NewPatient extends React.Component{
                         <form className="form-inline tmc_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Nino</span>
-                                    <input type="text" className="form-control col-10" placeholder="AA123456C"
-                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onNinoChange.bind(this)} />
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
+                                           aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
                         </form>
