@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CompletedTasks from "../completed_scans/completed_scans";
 import Profile from "../profile/profile";
 import style from './patients.css'
 

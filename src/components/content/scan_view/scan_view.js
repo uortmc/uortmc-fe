@@ -11,22 +11,29 @@ import user_img from "../../../resources/user.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";
 import example_scan from "../../../resources/example_scan.jpg";
-import example from './general_information/test'
+import GeneralInformation from "./general_information/general_information";
+import Results from "./results/results";
 
 class ScanView extends React.Component {
     constructor(props) {
         super(props);
+        this.generalInfoComponent=
+            <GeneralInformation
+                token={props.token}
+                status={props.status}
+                created={props.created}
+                comments={props.comments}/>
+        this.resultsComponent=
+            <Results
+                result={props.result}/>
         this.state={
-            content_area:example(),
+            content_area:this.generalInfoComponent,
             generalInfoActive:true,
-            statisticsActive:false,
             resultsActive:false,
             alert:<div/>
         }
     }
-    onViewScansSubmit(e){
-        this.state.setContent(<MyScans search={this.state.nino}/>)
-    }
+
     onCommentChange(e){
         console.log("Hello")
         this.setState({
@@ -60,21 +67,14 @@ class ScanView extends React.Component {
         this.clearActiveState()
         this.setState({generalInfoActive:true})
         this.setState({
-            content_area:example("One")
-        })
-    }
-    onStatisticsClick(e){
-        this.clearActiveState()
-        this.setState({statisticsActive:true})
-        this.setState({
-            content_area:example("Two")
+            content_area:this.generalInfoComponent
         })
     }
     onResultsClick(e){
         this.clearActiveState()
         this.setState({resultsActive:true})
         this.setState({
-            content_area:example("Three")
+            content_area:this.resultsComponent
         })
     }
     renderNavLink(txt,isActive,onClickCallback){
@@ -86,7 +86,6 @@ class ScanView extends React.Component {
     clearActiveState(){
         this.setState({
             generalInfoActive:false,
-            statisticsActive:false,
             resultsActive:false
         })
     }
@@ -118,12 +117,6 @@ class ScanView extends React.Component {
                                     "General Information",
                                     this.state.generalInfoActive,
                                     this.onGeneralInformationClick.bind(this))}
-                            </li>
-                            <li className="nav-item">
-                                {this.renderNavLink(
-                                    "Statistics",
-                                    this.state.statisticsActive,
-                                    this.onStatisticsClick.bind(this))}
                             </li>
                             <li className="nav-item">
                                 {this.renderNavLink(

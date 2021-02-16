@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CompletedTasks from "../completed_scans/completed_scans";
 import Profile from "../profile/profile";
 import style from './my_scans.css'
 
@@ -57,6 +56,10 @@ class MyScans extends React.Component {
                 title:"Identifier",
                 readOnly:true
             },
+            comments_collumn_settings:{
+                title:"Comments",
+                readOnly:false
+            },
             action_collumn_settings: {
                 title: "Action",
                 readOnly: true,
@@ -79,27 +82,40 @@ class MyScans extends React.Component {
         )
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
-        function buttonOnClick(scan){
-            cellProperties.setContent(<ScanView/>)
+        function buttonOnClick(token,status,created,comments,result){
+            cellProperties.setContent(<ScanView token={token} status={status} created={created} comments={comments} result={result}/>)
         }
-        if(col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments)
+        if(col!==7) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
             let button = document.createElement("BUTTON")
             button.innerText="Details"
             button.classList.add("btn")
             button.classList.add("btn-outline-primary")
-            button.addEventListener("click", (e)=>{e.preventDefault();buttonOnClick(value)});
+            button.addEventListener("click",
+                (e)=>{
+                e.preventDefault();
+                    buttonOnClick(
+                        instance.getDataAtCell(row,5),
+                        instance.getDataAtCell(row,4),
+                        instance.getDataAtCell(row,3),
+                        instance.getDataAtCell(row,6),
+                        "Benign-80%" //get result from TE
+                    )});
             td.appendChild(button)
         }
         return td
     }
     toHotTableCollumn(scan){
+        console.log(scan)
         return [
             scan.ascPatient.first_name,
             scan.ascPatient.last_name,
             scan.ascPatient.nino,scan.created,
             scan.status,
-            scan.token.toString().split("-")[0]+"...",""]
+            scan.token.toString().split("-")[0]+"...",
+            scan.comment,
+            ""  //empty, button will be rendered for action
+        ]
     }
     onScansResponce(responce){
         let data=responce.map(this.toHotTableCollumn.bind(this))
@@ -156,6 +172,7 @@ class MyScans extends React.Component {
                 <HotColumn settings={this.state.created_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.status_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.id_collumn_settings} className="tmc_hot_collumn"/>
+                <HotColumn settings={this.state.comments_collumn_settings} className="tmc_hot_collumn"/>
                 <HotColumn settings={this.state.action_collumn_settings} className="tmc_hot_collumn"/>
             </HotTable>
         );
