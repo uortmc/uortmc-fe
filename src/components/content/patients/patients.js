@@ -72,9 +72,15 @@ class Patients extends React.Component {
 
     }
     scanRenderer(instance, td, row, col, prop, value, cellProperties) {
-        function buttonOnClick(scan){
+        function buttonOnClick(first_name,last_name,enrolled_date,nino,comments){
             cellProperties.setContent(
-                <PatientView first_name="Stefanos" last_name="Stefanou" enrolled_date="Today" nino="AA123456B" comments="Not Set" setContent={cellProperties.setContent}/>)
+                <PatientView
+                    first_name={first_name}
+                    last_name={last_name}
+                    enrolled_date={enrolled_date}
+                    nino={nino}
+                    comments={comments}
+                    setContent={cellProperties.setContent}/>)
         }
         if(col!==5) return Handsontable.renderers.TextRenderer.apply(this,arguments)
         if(td.children.length<1){
@@ -82,7 +88,15 @@ class Patients extends React.Component {
             button.innerText="Details"
             button.classList.add("btn")
             button.classList.add("btn-outline-primary")
-            button.addEventListener("click", (e)=>{e.preventDefault();buttonOnClick(instance.getDataAtCell(row,2))});
+            button.addEventListener("click", (e)=>{
+                e.preventDefault();
+                buttonOnClick(
+                    instance.getDataAtCell(row,0),
+                    instance.getDataAtCell(row,1),
+                    instance.getDataAtCell(row,3),
+                    instance.getDataAtCell(row,2),
+                    instance.getDataAtCell(row,4))
+            });
             td.appendChild(button)
         }
         return td

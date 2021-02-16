@@ -9,6 +9,7 @@ import scan_img from "../../../resources/scan.png";
 import new_patient from "../new_patient/requests";
 import user_img from "../../../resources/user.png";
 import MyScans from "../my_scans/my_scans";
+import setComment from "./requests";
 
 
 class PatientView extends React.Component {
@@ -26,10 +27,22 @@ class PatientView extends React.Component {
     }
 
     onSubmit(e) {
-
+        setComment(
+            this.onSuccess.bind(this),
+            this.onAPIFailure.bind(this),
+            this.onGenericFailure.bind(this),
+            this.state.nino,
+            this.state.comments
+        )
     }
     onViewScansSubmit(e){
         this.state.setContent(<MyScans search={this.state.nino}/>)
+    }
+    onCommentChange(e){
+        console.log("Hello")
+        this.setState({
+            comments:e.target.value
+        })
     }
     onSuccess(responce){
         this.setState({
@@ -135,8 +148,8 @@ class PatientView extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Comments</span>
-                                    <textarea type="text" className="form-control col-10" value={this.state.comments}
-                                           aria-label="Username" aria-describedby="basic-addon1"/>
+                                    <textarea className="form-control col-10" value={this.state.comments}
+                                           aria-label="Username" aria-describedby="basic-addon1" onChange={this.onCommentChange.bind(this)}/>
                                 </div>
                             </div>
                         </form>
