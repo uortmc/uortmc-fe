@@ -21,9 +21,9 @@ class ScansRequests{
                 onErrorCallback(error);
             });
     }
-    static setComment(onSuccessCallback,onApiErrorCallback,onErrorCallback,id,comment){
+    static setComment(onSuccessCallback,onApiErrorCallback,onErrorCallback,token,comment){
         var form = qs.stringify({
-            'id': id,
+            'token': token,
             'comment':comment
         });
         var config = {
@@ -31,7 +31,7 @@ class ScansRequests{
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/scansetcomment',
+            url: Enviroment.INFO_BACKEND_URL+'/app/authenticated/updatescancomment',
             withCredentials:true,
             data:form
         };

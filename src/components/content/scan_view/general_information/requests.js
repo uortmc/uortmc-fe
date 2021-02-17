@@ -1,4 +1,4 @@
-import Enviroment from "../../../settings";
+import Enviroment from "../../../../settings";
 
 
 var axios = require('axios');
