@@ -13,6 +13,7 @@ import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
 import PatientView from "../patient_view/patient_view";
 import ScanView from "../scan_view/scan_view";
+import PatientsRequests from "../patients/requests";
 
 class MyScans extends React.Component {
     constructor(props) {
@@ -57,8 +58,14 @@ class MyScans extends React.Component {
                 readOnly:true
             },
             comments_collumn_settings:{
-                title:"Comments",
-                readOnly:false
+                title: "Comments",
+                readOnly: false,
+                type:'text',
+                validator:this.commentValidator,
+                onSuccessCallback:undefined,
+                onApiErrorResponce:this.onApiErrorResponce.bind(this),
+                onErrorResponce:this.onErrorResponce.bind(this),
+                myscans:this
             },
             action_collumn_settings: {
                 title: "Action",
@@ -68,6 +75,15 @@ class MyScans extends React.Component {
 
         };
         this.initializeSearch()
+    }
+    commentValidator(comment,callback){
+
+        let ninoCollumn=5
+        let scanToken=this.myscans.state.hotData[this.row][ninoCollumn] //Wow thats terrible TODO is there any better way?
+        ScansRequests.setComment(()=>{},this.onApiErrorResponce,this.onErrorResponce,scanToken,comment)
+
+        callback(true)
+
     }
     initializeSearch(){
         if(this.state.search!==""){
@@ -85,8 +101,13 @@ class MyScans extends React.Component {
         function buttonOnClick(token,status,created,comments,result){
             cellProperties.setContent(<ScanView token={token} status={status} created={created} comments={comments} result={result}/>)
         }
-        if(col!==7) return Handsontable.renderers.TextRenderer.apply(this,arguments)
-        if(td.children.length<1){
+        if(col!==7 && col!==5) return Handsontable.renderers.TextRenderer.apply(this,arguments)
+        /*This thing selects the Token column*/
+        if(col===5){
+            td.innerText=value.split("-")[0]
+        }
+        /*This thing selects the Action collumn*/
+        if(col===7 && td.children.length<1){
             let button = document.createElement("BUTTON")
             button.innerText="Details"
             button.classList.add("btn")
@@ -112,7 +133,7 @@ class MyScans extends React.Component {
             scan.ascPatient.last_name,
             scan.ascPatient.nino,scan.created,
             scan.status,
-            scan.token.toString().split("-")[0]+"...",
+            scan.token,
             scan.comment,
             ""  //empty, button will be rendered for action
         ]
