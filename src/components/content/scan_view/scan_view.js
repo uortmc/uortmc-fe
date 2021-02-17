@@ -25,7 +25,7 @@ class ScanView extends React.Component {
                 comments={props.comments}/>
         this.resultsComponent=
             <Results
-                result={props.result}/>
+                token={props.token}/>
         this.state={
             content_area:this.generalInfoComponent,
             generalInfoActive:true,
