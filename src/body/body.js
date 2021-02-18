@@ -49,8 +49,8 @@ class Body extends React.Component{
     renderAuthorized(){
         return <div className="container">
             <div className="row"><div className="col-12">{this.state.navbar}</div></div>
-            <div className="row"><div className="col-12">{this.state.body}</div></div>
-            <div className="row"><div className="col-12">{this.state.footer}</div></div>
+            <div className="row mt-3"><div className="col-12">{this.state.body}</div></div>
+            <div className="row mt-3"><div className="col-12">{this.state.footer}</div></div>
         </div>
     }
     renderUnauthorized(){

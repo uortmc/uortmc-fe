@@ -7,6 +7,7 @@ import style from './new_patient.css'
 import new_patient from "./requests";
 import alert from "../../utils/alert/alert";
 import Toast from 'react-bootstrap/Toast';
+import Content_header from "../../../etc/ContentHeader/content_header";
 class NewPatient extends React.Component{
     constructor(props) {
         super(props);
@@ -77,23 +78,10 @@ class NewPatient extends React.Component{
     }
 
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Patient submission form
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Content_header img={user_img} message="Patient Submission Form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group col-12">

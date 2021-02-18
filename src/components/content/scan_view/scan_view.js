@@ -90,7 +90,7 @@ class ScanView extends React.Component {
         })
     }
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_container_fluid">
             {this.state.alert}
             <div className="row">
                 <div className="card col-12" >

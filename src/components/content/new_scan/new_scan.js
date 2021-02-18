@@ -10,6 +10,7 @@ import scan_img from '../../../resources/scan.png'
 import NinoVerifier from "../../../etc/utils";
 import new_scan from "./requests";
 import NewScanRequests from "./requests";
+import Content_header from "../../../etc/ContentHeader/content_header";
 class NewScan extends React.Component{
     constructor(props) {
         super(props);
@@ -77,23 +78,10 @@ class NewScan extends React.Component{
     }
 
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Scan Submission Form
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <Content_header img={scan_img} message="Scan Submission Form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group col-12">

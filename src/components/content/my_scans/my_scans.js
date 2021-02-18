@@ -199,7 +199,7 @@ class MyScans extends React.Component {
         );
     }
     render() {
-        return <div className="containter">
+        return <div className="container-fluid tmc_container_fluid">
             {this.state.alert}
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">

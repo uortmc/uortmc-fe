@@ -14,3 +14,6 @@
 .tmc_input_fullspan{
     width: 100%;
 }
+.tmc_container_fluid{
+    padding-right: 0;
+}
