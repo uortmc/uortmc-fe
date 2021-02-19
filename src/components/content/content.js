@@ -1,7 +1,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Patients from "./patients/patients";
+import MyPatients from "./my_patients/my_patients";
 import NewPatient from "./new_patient/new_patient";
 import NewScan from "./new_scan/new_scan";
 import MyScans from "./my_scans/my_scans";
@@ -27,7 +27,7 @@ class Content extends React.Component{
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewScan setContent={this.setContent.bind(this)}/>)} href="#list-item-2">New Scan</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans search="" setContent={this.setContent.bind(this)}/>)} href="#list-item-3">My Scans</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewPatient setContent={this.setContent.bind(this)}/>)} href="#list-item-4">New Patient</a>
-                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<Patients setContent={this.setContent.bind(this)}/>)} href="#list-item-4">My Patients</a>
+                        <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyPatients setContent={this.setContent.bind(this)}/>)} href="#list-item-4">My Patients</a>
                     </div>
                 </div>
                 <div className="col-10 ">

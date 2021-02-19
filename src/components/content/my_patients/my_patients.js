@@ -1,7 +1,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './patients.css'
+import './my_patients.css'
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
@@ -12,7 +12,7 @@ import Content_header from "../../../etc/ContentHeader/content_header";
 import scan_img from "../../../resources/scan.png";
 
 import user_img from "../../../resources/user.png";
-class Patients extends React.Component {
+class MyPatients extends React.Component {
     constructor(props) {
         super(props);
         this.setContent=props.setContent
@@ -195,4 +195,4 @@ class Patients extends React.Component {
 }
 
 
-export default Patients;
+export default MyPatients;

@@ -125,7 +125,7 @@ class Profile extends React.Component{
                                 <div className="container">
                                     <div className="row">
                                         <span className="input-group-text col-2" id="basic-addon1">Task quota</span>
-                                        <input type="text" className="form-control col-10" disabled placeholder={"No Limit"}
+                                        <input type="text" className="form-control col-10" disabled placeholder={"No limit"}
                                                aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>
                                 </div>
