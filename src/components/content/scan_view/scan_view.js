@@ -5,7 +5,7 @@ import alert from "../../utils/alert/alert";
 import scan_img from "../../../resources/scan.png";
 import GeneralInformation from "./general_information/general_information";
 import Results from "./results/results";
-
+import './scan_view.css'
 class ScanView extends React.Component {
     constructor(props) {
         super(props);
@@ -82,13 +82,13 @@ class ScanView extends React.Component {
         })
     }
     render() {
-        return <div className="container-fluid tmc_container_fluid">
+        return <div className="container-fluid tmc_sv_container_fluid">
             {this.state.alert}
             <div className="row">
                 <div className="card col-12" >
                     <div className="row">
                         <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
+                            <img src={scan_img} alt="ABC" className="tmc_sv_scan_img_profile"/>
                         </div>
                         <div className="col-8">
                             <div className="card-body">

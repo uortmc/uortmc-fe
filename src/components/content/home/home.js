@@ -75,7 +75,7 @@ function Home() {
     }
 
     return (
-        <div className="container-fluid tmc_container_fluid">
+        <div className="container-fluid tmc_home_container_fluid">
             <div className="row">
                 <Content_header img={user_img} message="Home"/>
             </div>

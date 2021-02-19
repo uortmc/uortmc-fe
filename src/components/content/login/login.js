@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import login from "./requests";
 import alert from "../../utils/alert/alert";
 import logo from "../../../resources/logo.png";
+import './login.css'
 /**
  * LoginStatus
  */
@@ -70,7 +71,7 @@ class Login extends React.Component{
                 {this.state.alert}
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="#">
-                        <img className="tmc_logo" src={logo}/>
+                        <img className="tmc_login_logo" src={logo}/>
                         UORTMC|Royal Berkshire Hospital</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

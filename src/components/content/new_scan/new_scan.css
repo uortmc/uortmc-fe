@@ -1,13 +1,8 @@
-.tmc_user_img_profile{
-    margin: 15% 25%;
+
+
+.tmc_ns_form_fullspan{
+    width: 100%;
 }
-.list-group{
+.tmc_scan_list_group{
     padding:0;
-}
-.tmc_patient_form_icon{
-    width: 60px;
-    height: 60px;
-}
-.tmc_container_fluid{
-    padding-right: 0;
 }

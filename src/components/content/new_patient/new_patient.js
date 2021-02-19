@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.png'
 import new_patient from "./requests";
 import alert from "../../utils/alert/alert";
+import './new_patient.css'
 import Content_header from "../../../etc/ContentHeader/content_header";
 class NewPatient extends React.Component{
     constructor(props) {
@@ -75,15 +76,15 @@ class NewPatient extends React.Component{
     }
 
     render() {
-        return <div className="container-fluid tmc_container_fluid">
+        return <div className="container-fluid tmc_patient_container_fluid">
             {this.state.alert}
             <div className="row">
                 <Content_header img={user_img} message="Patient Submission Form"/>
             </div>
             <div className="row">
-                <div id="list-example" className="list-group col-12">
+                <div id="list-example" className="list-group tmc_patient_list_group col-12">
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Type</span>
@@ -94,7 +95,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">First name</span>
@@ -105,7 +106,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Last name</span>
@@ -116,7 +117,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Nino</span>
@@ -127,7 +128,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>

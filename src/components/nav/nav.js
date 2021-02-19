@@ -10,6 +10,7 @@ import Requests from "./requests";
 import alert from "../utils/alert/alert";
 import About from "../content/about/about";
 import notificationSound from '../../resources/notification.wav';
+import './nav.css'
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
@@ -88,7 +89,7 @@ class NavBar extends React.Component{
         return <nav className="navbar navbar-expand-lg navbar-light bg-light">
             {this.notificationSoundComponent()}
             <a className="navbar-brand" href="#">
-                <img className="tmc_logo" src={logo}/>
+                <img className="tmc_nav_logo" src={logo}/>
                 UORTMC|Royal Berkshire Hospital</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -115,8 +116,8 @@ class NavBar extends React.Component{
                     </li>
                 </ul>
                 <span className="navbar-text">
-                    <img className="tmc_user_icon" src={user_img} />
-                    <span className="tmc_user_name"> {this.state.username}</span>
+                    <img className="tmc_nav_user_icon" src={user_img} />
+                    <span className="tmc_nav_user_name"> {this.state.username}</span>
                     {this.state.alert}
                 </span>
             </div>

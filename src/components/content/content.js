@@ -5,6 +5,7 @@ import Patients from "./patients/patients";
 import NewPatient from "./new_patient/new_patient";
 import NewScan from "./new_scan/new_scan";
 import MyScans from "./my_scans/my_scans";
+import './content.css'
 class Content extends React.Component{
     constructor(props) {
         super(props);
@@ -19,10 +20,10 @@ class Content extends React.Component{
         })
     }
     render() {
-        return <div className="container-fluid tmc_content">
+        return <div className="container-fluid tmc_content_container_fullspan">
             <div className="row">
-                <div className="col-2 tmc_nav_v">
-                    <div id="list-example" className="list-group">
+                <div className="col-2">
+                    <div id="list-example" className="tmc_content_list_group">
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewScan setContent={this.setContent.bind(this)}/>)} href="#list-item-2">New Scan</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<MyScans search="" setContent={this.setContent.bind(this)}/>)} href="#list-item-3">My Scans</a>
                         <a className="list-group-item list-group-item-action" onClick={()=>this.setContent(<NewPatient setContent={this.setContent.bind(this)}/>)} href="#list-item-4">New Patient</a>

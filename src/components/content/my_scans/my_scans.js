@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
-
+import './my_scans.css'
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
 import ScanView from "../scan_view/scan_view";
@@ -24,7 +24,11 @@ class MyScans extends React.Component {
             table_conf:{
                 width: '100%',
                 stretchH:"all",
-                autoColumnSize: true
+                autoColumnSize: true,
+                hiddenColumns: {
+                    columns: [6],
+                    indicators: false
+                }
 
             },
             firstname_collumn_settings: {
@@ -96,10 +100,12 @@ class MyScans extends React.Component {
         function buttonOnClick(token,status,created,comments,result){
             cellProperties.setContent(<ScanView token={token} status={status} created={created} comments={comments} result={result}/>)
         }
-        if(col!==7 && col!==5) return Handsontable.renderers.TextRenderer.apply(this,arguments)
+
+        console.log(col+"-"+value)
+        if(col!==7 && col!==5 && col!==6) return Handsontable.renderers.TextRenderer.apply(this,arguments);
         /*This thing selects the Token column*/
         if(col===5){
-            td.innerText=value.split("-")[0]
+            td.innerText=value.split("-")[0];
         }
         /*This thing selects the Action collumn*/
         if(col===7 && td.children.length<1){
@@ -119,7 +125,7 @@ class MyScans extends React.Component {
                     )});
             td.appendChild(button)
         }
-        return td
+        return td;
     }
     toHotTableCollumn(scan){
         console.log(scan)
@@ -182,19 +188,19 @@ class MyScans extends React.Component {
                 settings={this.state.table_conf}
                 renderer={this.scanRenderer}>
 
-                <HotColumn settings={this.state.firstname_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.lastname_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.nino_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.created_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.status_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.id_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.comments_collumn_settings} className="tmc_hot_collumn"/>
-                <HotColumn settings={this.state.action_collumn_settings} className="tmc_hot_collumn"/>
+                <HotColumn settings={this.state.firstname_collumn_settings} />
+                <HotColumn settings={this.state.lastname_collumn_settings} />
+                <HotColumn settings={this.state.nino_collumn_settings} />
+                <HotColumn settings={this.state.created_collumn_settings} />
+                <HotColumn settings={this.state.status_collumn_settings} />
+                <HotColumn settings={this.state.id_collumn_settings} />
+                <HotColumn settings={this.state.comments_collumn_settings} />
+                <HotColumn settings={this.state.action_collumn_settings} />
             </HotTable>
         );
     }
     render() {
-        return <div className="container-fluid tmc_container_fluid">
+        return <div className="container-fluid tmc_ms_container_fluid">
             {this.state.alert}
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
@@ -207,7 +213,7 @@ class MyScans extends React.Component {
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12 tmc_hot_table_area">
+                <div className="col-12 tmc_ms_hot_table_area">
                     {this.renderTable()}
                 </div>
             </div>

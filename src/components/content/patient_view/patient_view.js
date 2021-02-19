@@ -5,7 +5,7 @@ import alert from "../../utils/alert/alert";
 import user_img from "../../../resources/user.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";
-
+import './patient_view.css'
 
 class PatientView extends React.Component {
 
@@ -64,13 +64,13 @@ class PatientView extends React.Component {
         })
     }
     render() {
-        return <div className="container-fluid tmc_container_fluid">
+        return <div className="container-fluid tmc_pv_container_fluid">
             {this.state.alert}
             <div className="row">
                 <div className="card col-12" >
                     <div className="row">
                         <div className="col-4">
-                            <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
+                            <img src={user_img} alt="ABC" className="tmc_pv_user_img_profile"/>
                         </div>
                         <div className="col-8">
                             <div className="card-body">
@@ -83,9 +83,9 @@ class PatientView extends React.Component {
                 </div>
             </div>
             <div className="row">
-                <div id="list-example" className="list-group col-12">
+                <div id="list-example" className="list-group tmc_pv_list_group col-12">
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Type</span>
@@ -96,7 +96,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">First name</span>
@@ -107,7 +107,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Last name</span>
@@ -118,7 +118,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Nino</span>
@@ -129,7 +129,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
@@ -140,7 +140,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Comments</span>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './patients.css'
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
@@ -23,8 +23,11 @@ class Patients extends React.Component {
             table_conf:{
                 width: '100%',
                 stretchH:"all",
-                autoColumnSize: true
-
+                autoColumnSize: true,
+                hiddenColumns: {
+                    columns: [4],
+                    indicators: false
+                }
             },
             firstname_collumn_settings: {
                 title: "First Name",
@@ -164,7 +167,7 @@ class Patients extends React.Component {
         );
     }
     render() {
-        return <div className="container-fluid tmc_container_fluid">
+        return <div className="container-fluid tmc_patients_container_fluid">
             {this.state.alert}
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
@@ -177,7 +180,7 @@ class Patients extends React.Component {
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12 tmc_hot_table_area">
+                <div className="col-12 tmc_patients_hot_table_area">
                     {this.renderTable()}
                 </div>
             </div>

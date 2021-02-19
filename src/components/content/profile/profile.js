@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.png'
 import profile from './requests'
 import alert from "../../utils/alert/alert";
+import './profile.css'
 class Profile extends React.Component{
     constructor(props) {
         super(props);
@@ -59,7 +60,7 @@ class Profile extends React.Component{
                     <div className="card col-12" >
                         <div className="row">
                             <div className="col-4">
-                                <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
+                                <img src={user_img} alt="ABC" className="tmc_profile_user_img_profile tmc_profile_patient_form_icon"/>
                             </div>
                             <div className="col-8">
                                 <div className="card-body">
@@ -72,7 +73,7 @@ class Profile extends React.Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div id="list-example" className="list-group col-12">
+                    <div id="list-example" className="list-group tmc_profile_list_group col-12">
                         <a className="list-group-item list-group-item-action" href="#list-item-1">Permission : Doctor</a>
                         <a className="list-group-item list-group-item-action" href="#list-item-2">Enrolled Date : {this.state.enrolled_date}</a>
                         <a className="list-group-item list-group-item-action" href="#list-item-3">Total Tasks : {this.state.tasks}</a>
