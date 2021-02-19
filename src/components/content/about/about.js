@@ -8,7 +8,7 @@ class About extends React.Component{
     }
 
     render() {
-        return <div className="card text-center">
+        return <div className="tmc_generic_rounded_element card text-center ">
             <div className="card-header">
                 UORTMC About page
             </div>

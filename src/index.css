@@ -1,0 +1,7 @@
+.tmc_generic_rounded_element{
+    border-radius: 15px;
+}
+.tmc_generic_bordered_element{
+
+    border:1px solid rgba(0,0,0,0.1);
+}

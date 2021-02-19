@@ -8,6 +8,8 @@ import './my_scans.css'
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
 import ScanView from "../scan_view/scan_view";
+import Content_header from "../../../etc/ContentHeader/content_header";
+import scan_img from "../../../resources/scan.png";
 
 class MyScans extends React.Component {
     constructor(props) {
@@ -202,6 +204,9 @@ class MyScans extends React.Component {
     render() {
         return <div className="container-fluid tmc_ms_container_fluid">
             {this.state.alert}
+            <div className="row">
+                <Content_header img={scan_img} message="My Scans"/>
+            </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">

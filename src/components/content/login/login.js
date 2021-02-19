@@ -69,7 +69,7 @@ class Login extends React.Component{
         return <div>
             <div className="container">
                 {this.state.alert}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light tmc_generic_rounded_element tmc_generic_bordered_element">
                     <a className="navbar-brand" href="#">
                         <img className="tmc_login_logo" src={logo}/>
                         UORTMC|Royal Berkshire Hospital</a>

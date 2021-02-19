@@ -11,6 +11,7 @@ import alert from "../utils/alert/alert";
 import About from "../content/about/about";
 import notificationSound from '../../resources/notification.wav';
 import './nav.css'
+import '../../index.css'
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
@@ -86,7 +87,7 @@ class NavBar extends React.Component{
         })
     }
     render() {
-        return <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        return <nav className="navbar navbar-expand-lg navbar-light bg-light tmc_generic_rounded_element tmc_generic_bordered_element">
             {this.notificationSoundComponent()}
             <a className="navbar-brand" href="#">
                 <img className="tmc_nav_logo" src={logo}/>
