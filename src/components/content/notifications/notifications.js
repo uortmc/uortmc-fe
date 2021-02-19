@@ -48,7 +48,7 @@ class Notifications extends React.Component{
 
         return <div className="col-12 tmc_notifications-no-padding">
             <div className="card border-info mb-3" >
-                <div className="card-body text-info">
+                <div className="card-body text-primary">
                     <h5 className="card-title">Notification</h5>
                     <p className="card-text">Message: {notification.message}</p>
                     <p className="card-text"><small className="text-muted">Created: {notification.created}</small></p>

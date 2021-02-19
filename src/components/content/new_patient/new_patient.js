@@ -139,7 +139,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create new patient</button>
+                        <button className="btn btn-outline-primary" onClick={this.onSubmit.bind(this)}>Create new patient</button>
                     </a>
                 </div>
             </div>

@@ -211,7 +211,7 @@ class MyScans extends React.Component {
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search by NINO" value={this.state.search} onChange={this.onSearchChange.bind(this)} aria-label="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.onSearch.bind(this)} type="submit">Search
+                        <button className="btn btn-outline-primary my-2 my-sm-0" onClick={this.onSearch.bind(this)} type="submit">Search
                         </button>
 
                     </form>

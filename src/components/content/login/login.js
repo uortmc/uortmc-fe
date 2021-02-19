@@ -98,7 +98,7 @@ class Login extends React.Component{
                                 <input type="password" className="form-control" value={this.state.password} onChange={this.onPasswordChange.bind(this)} id="exampleInputPassword1"
                                        placeholder="Password"/>
                             </div>
-                            <button type="submit" className="btn btn-primary"  onClick={(e)=>{this.onSubmit(e);e.preventDefault()}}>Log in</button>
+                            <button type="submit" className="btn btn-outline-primary"  onClick={(e)=>{this.onSubmit(e);e.preventDefault()}}>Log in</button>
                         </form>
                     </div>
                     <div className="col-4"/>

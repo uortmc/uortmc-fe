@@ -51,7 +51,7 @@ class Results extends React.Component {
                 <div>
                     <span className="card-title text-left">Classification</span>
                     <span className="card-title text-right">
-                <button className="btn btn-success">{this.state.results}</button>
+                <button className="btn btn-outline-primary">{this.state.results}</button>
             </span>
                 </div>
                 <img className="tmc_scan_image" src={example_scan}/>

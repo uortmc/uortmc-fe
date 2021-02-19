@@ -94,8 +94,8 @@ function Home() {
                             {activeStep.component()}
                         </div>
                         <div className="btn-component">
-                            <input type="button" className="btn btn-primary" value="Back" onClick={handleBack} disabled={steps[0].key === activeStep.key} />
-                            <input type="button" className="btn btn-primary" value={steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Done'} onClick={handleNext} />
+                            <input type="button" className="btn btn-outline-primary" value="Back" onClick={handleBack} disabled={steps[0].key === activeStep.key} />
+                            <input type="button" className="btn btn-outline-primary" value={steps[steps.length - 1].key !== activeStep.key ? 'Next' : 'Done'} onClick={handleNext} />
                         </div>
                     </div>
                 </div>

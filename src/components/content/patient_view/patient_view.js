@@ -139,8 +139,8 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save changes</button>
-                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View scans</button>
+                        <button className="btn btn-outline-primary" onClick={this.onSubmit.bind(this)}>Save changes</button>
+                        <button className="btn btn-outline-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View scans</button>
                     </a>
 
                 </div>
