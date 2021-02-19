@@ -3,7 +3,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import login from "./requests";
 import alert from "../../utils/alert/alert";
-import logo from "../../../resources/logo.png";
+import logo from "../../../resources/logo2.png";
 import './login.css'
 /**
  * LoginStatus
@@ -72,7 +72,7 @@ class Login extends React.Component{
                 <nav className="navbar navbar-expand-lg navbar-light bg-light tmc_generic_rounded_element tmc_generic_bordered_element">
                     <a className="navbar-brand" href="#">
                         <img className="tmc_login_logo" src={logo}/>
-                        UORTMC|Royal Berkshire Hospital</a>
+                    </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false"
