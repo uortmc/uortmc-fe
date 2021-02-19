@@ -6,6 +6,8 @@ import scan_img from "../../../resources/scan.png";
 import GeneralInformation from "./general_information/general_information";
 import Results from "./results/results";
 import './scan_view.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
+import user_img from "../../../resources/user.png";
 class ScanView extends React.Component {
     constructor(props) {
         super(props);
@@ -85,20 +87,7 @@ class ScanView extends React.Component {
         return <div className="container-fluid tmc_sv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_sv_scan_img_profile"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Scan View
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Content_header img={scan_img} message="Scan Details"/>
             </div>
             <div className="row">
                 <div className="card text-center col-12">

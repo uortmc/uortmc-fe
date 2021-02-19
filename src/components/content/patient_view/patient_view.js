@@ -6,6 +6,7 @@ import user_img from "../../../resources/user.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";
 import './patient_view.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
 
 class PatientView extends React.Component {
 
@@ -67,20 +68,7 @@ class PatientView extends React.Component {
         return <div className="container-fluid tmc_pv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={user_img} alt="ABC" className="tmc_pv_user_img_profile"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Patient View
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Content_header img={user_img} message="Patient Details"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_pv_list_group col-12">

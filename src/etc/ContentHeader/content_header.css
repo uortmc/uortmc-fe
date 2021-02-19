@@ -6,8 +6,8 @@
     height: 60px;
 }
 .tmc_ch_rounded_element{
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 .tmc_ch_margin_bottom_ed_element{
     margin-bottom: 2%;
