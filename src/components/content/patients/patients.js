@@ -26,6 +26,7 @@ class Patients extends React.Component {
             table_conf:{
                 width: '100%',
                 stretchH:"all",
+                autoColumnSize: true
 
             },
             firstname_collumn_settings: {

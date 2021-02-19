@@ -29,7 +29,8 @@ class MyScans extends React.Component {
             ],
             table_conf:{
                 width: '100%',
-                stretchH:"all"
+                stretchH:"all",
+                autoColumnSize: true
 
             },
             firstname_collumn_settings: {
