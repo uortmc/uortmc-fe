@@ -77,7 +77,7 @@ class NewScan extends React.Component{
         return <div className="container-fluid tmc_ns_container_fluid">
             {this.state.alert}
             <div className="row">
-                    <Content_header img={scan_img} message="Scan Submission Form"/>
+                    <Content_header img={scan_img} message="Scan submission form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_scan_list_group col-12">
@@ -96,7 +96,7 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Created Date</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Created date</span>
                                     <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
@@ -130,14 +130,14 @@ class NewScan extends React.Component{
                         <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Scan Image</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Scan image</span>
                                     <input className="form-control col-10" type="file" id="formFileDisabled"/>
                                 </div>
                             </div>
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Submit new Scan</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Submit new scan</button>
                     </a>
                 </div>
             </div>

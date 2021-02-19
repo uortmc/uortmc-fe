@@ -60,7 +60,7 @@ class Profile extends React.Component{
                 {this.state.alert}
                 <div className="row">
                     <Content_header img={user_img}
-                                    message="Profile"
+                                    message="My profile"
                     />
                 </div>
                 <div className="row">
@@ -124,7 +124,7 @@ class Profile extends React.Component{
                             <form className="form-inline tmc_pv_form_fullspan">
                                 <div className="container">
                                     <div className="row">
-                                        <span className="input-group-text col-2" id="basic-addon1">Task Quota</span>
+                                        <span className="input-group-text col-2" id="basic-addon1">Task quota</span>
                                         <input type="text" className="form-control col-10" disabled placeholder={"No Limit"}
                                                aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>
@@ -135,7 +135,7 @@ class Profile extends React.Component{
                             <form className="form-inline tmc_pv_form_fullspan">
                                 <div className="container">
                                     <div className="row">
-                                        <span className="input-group-text col-2" id="basic-addon1">Tasks Left</span>
+                                        <span className="input-group-text col-2" id="basic-addon1">Tasks left</span>
                                         <input type="text" className="form-control col-10" disabled placeholder={"Infinite"}
                                                aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>
@@ -146,7 +146,7 @@ class Profile extends React.Component{
                             <form className="form-inline tmc_pv_form_fullspan">
                                 <div className="container">
                                     <div className="row">
-                                        <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                        <span className="input-group-text col-2" id="basic-addon1">Enrolled date</span>
                                         <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
                                                aria-label="Username" aria-describedby="basic-addon1"/>
                                     </div>

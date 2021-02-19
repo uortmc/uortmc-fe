@@ -68,7 +68,7 @@ class PatientView extends React.Component {
         return <div className="container-fluid tmc_pv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="Patient Details"/>
+                <Content_header img={user_img} message="Patient details"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_pv_list_group col-12">
@@ -120,7 +120,7 @@ class PatientView extends React.Component {
                         <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled date</span>
                                     <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
@@ -139,8 +139,8 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save Changes</button>
-                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View Scans</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save changes</button>
+                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View scans</button>
                     </a>
 
                 </div>

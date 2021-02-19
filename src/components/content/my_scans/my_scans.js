@@ -34,12 +34,12 @@ class MyScans extends React.Component {
 
             },
             firstname_collumn_settings: {
-                title: "First Name",
+                title: "First name",
                 readOnly: true
 
             },
             lastname_collumn_settings: {
-                title: "Last Name",
+                title: "Last name",
                 readOnly: true
             },
             nino_collumn_settings: {
@@ -47,7 +47,7 @@ class MyScans extends React.Component {
                 readOnly: true
             },
             created_collumn_settings: {
-                title: "Created Date",
+                title: "Created date",
                 readOnly: true
             },
             status_collumn_settings:{
@@ -205,7 +205,7 @@ class MyScans extends React.Component {
         return <div className="container-fluid tmc_ms_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={scan_img} message="My Scans"/>
+                <Content_header img={scan_img} message="My scans"/>
             </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">

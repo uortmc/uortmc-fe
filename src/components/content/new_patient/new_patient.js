@@ -79,7 +79,7 @@ class NewPatient extends React.Component{
         return <div className="container-fluid tmc_patient_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="Patient Submission Form"/>
+                <Content_header img={user_img} message="Patient submission form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_patient_list_group col-12">
@@ -131,7 +131,7 @@ class NewPatient extends React.Component{
                         <form className="form-inline tmc_patient_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled date</span>
                                     <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
@@ -139,7 +139,7 @@ class NewPatient extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create New Patient</button>
+                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Create new patient</button>
                     </a>
                 </div>
             </div>

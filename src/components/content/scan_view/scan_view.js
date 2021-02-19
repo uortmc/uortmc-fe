@@ -87,7 +87,7 @@ class ScanView extends React.Component {
         return <div className="container-fluid tmc_sv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={scan_img} message="Scan Details"/>
+                <Content_header img={scan_img} message="Scan details"/>
             </div>
             <div className="row">
                 <div className="card text-center col-12">
@@ -95,7 +95,7 @@ class ScanView extends React.Component {
                         <ul className="nav nav-tabs card-header-tabs">
                             <li className="nav-item">
                                 {this.renderNavLink(
-                                    "General Information",
+                                    "General information",
                                     this.state.generalInfoActive,
                                     this.onGeneralInformationClick.bind(this))}
                             </li>

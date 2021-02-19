@@ -33,12 +33,12 @@ class Patients extends React.Component {
                 }
             },
             firstname_collumn_settings: {
-                title: "First Name",
+                title: "First name",
                 readOnly: true
 
             },
             lastname_collumn_settings: {
-                title: "Last Name",
+                title: "Last name",
                 readOnly: true
             },
             nino_collumn_settings: {
@@ -46,7 +46,7 @@ class Patients extends React.Component {
                 readOnly: true
             },
             enrolled_collumn_settings: {
-                title: "Enrolled Date",
+                title: "Enrolled date",
                 readOnly: true
             },
             comments_collumn_settings: {
@@ -173,7 +173,7 @@ class Patients extends React.Component {
         return <div className="container-fluid tmc_patients_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="My Patients"/>
+                <Content_header img={user_img} message="My patients"/>
             </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
