@@ -1,19 +1,13 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from "../profile/profile";
-import style from './my_scans.css'
-
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
 
 import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
-import PatientView from "../patient_view/patient_view";
 import ScanView from "../scan_view/scan_view";
-import PatientsRequests from "../patients/requests";
 
 class MyScans extends React.Component {
     constructor(props) {

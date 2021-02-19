@@ -1,4 +1,4 @@
-import user_img from "../../resources/user.png";
+
 import React from "react";
 
 function Content_header(props){

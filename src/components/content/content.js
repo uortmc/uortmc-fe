@@ -1,12 +1,6 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import style from './content.css'
-import example_scan from '../../resources/example_scan.jpg'
-import Home from "./home/home";
-import Profile from "./profile/profile";
-import Body from "../../body/body";
 import Patients from "./patients/patients";
 import NewPatient from "./new_patient/new_patient";
 import NewScan from "./new_scan/new_scan";

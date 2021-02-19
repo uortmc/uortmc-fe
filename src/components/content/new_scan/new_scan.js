@@ -1,14 +1,9 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../../resources/user.png'
-
 import alert from "../../utils/alert/alert";
-import Toast from 'react-bootstrap/Toast';
 import scan_img from '../../../resources/scan.png'
 import NinoVerifier from "../../../etc/utils";
-import new_scan from "./requests";
 import NewScanRequests from "./requests";
 import Content_header from "../../../etc/ContentHeader/content_header";
 class NewScan extends React.Component{

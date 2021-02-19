@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './home.css'
 import Content_header from "../../../etc/ContentHeader/content_header";
-import scan_img from "../../../resources/scan.png";
 import user_img from "../../../resources/user.png";
 import Hint from "./hints/hint";
 const firstComponent = () => {

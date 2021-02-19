@@ -1,8 +1,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../resources/user.png'
-import style from './nav.css'
+import user_img from '../../resources/user.png';
 import Profile from "../content/profile/profile";
 import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";

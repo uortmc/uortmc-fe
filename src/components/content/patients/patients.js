@@ -1,9 +1,6 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from "../profile/profile";
-import style from './patients.css'
 
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";

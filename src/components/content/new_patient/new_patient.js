@@ -1,12 +1,9 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.png'
-import style from './new_patient.css'
 import new_patient from "./requests";
 import alert from "../../utils/alert/alert";
-import Toast from 'react-bootstrap/Toast';
 import Content_header from "../../../etc/ContentHeader/content_header";
 class NewPatient extends React.Component{
     constructor(props) {

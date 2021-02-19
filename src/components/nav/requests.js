@@ -1,7 +1,6 @@
 
 import Enviroment from "../../settings";
 var axios = require('axios');
-var qs = require('qs');
 class Requests{
     static username(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
         var config = {

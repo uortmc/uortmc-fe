@@ -1,11 +1,6 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import example_scan from "../../../resources/example_scan.jpg";
-import style from './login.css'
-
-import Enviroment from "../../../settings";
 import login from "./requests";
 import alert from "../../utils/alert/alert";
 import logo from "../../../resources/logo.png";

@@ -2,7 +2,6 @@ import Enviroment from "../../../../settings";
 
 
 var axios = require('axios');
-var qs = require('qs');
 function getResults(onSuccessCallback,onApiErrorCallback,onErrorCallback,token){
     var params = {
         'token': token

@@ -1,12 +1,7 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NinoVerifier from "../../../etc/utils";
-import NewScanRequests from "../new_scan/requests";
 import alert from "../../utils/alert/alert";
-import scan_img from "../../../resources/scan.png";
-import new_patient from "../new_patient/requests";
 import user_img from "../../../resources/user.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";

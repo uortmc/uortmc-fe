@@ -1,9 +1,7 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.png'
-import style from './profile.css'
 import profile from './requests'
 import alert from "../../utils/alert/alert";
 class Profile extends React.Component{
