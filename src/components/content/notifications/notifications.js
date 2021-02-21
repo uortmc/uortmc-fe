@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import notifications from "./requests";
 import alert from "../../utils/alert/alert";
 import Content_header from "../../../etc/ContentHeader/content_header";
-import user_img from "../../../resources/user.png";
+import notifications_img from "../../../resources/icons/notifications.png";
 import './notifications.css'
 class Notifications extends React.Component{
     constructor(props) {
@@ -61,7 +61,7 @@ class Notifications extends React.Component{
         return <div className="container-fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="Notifications"/>
+                <Content_header img={notifications_img} message="Notifications"/>
             </div>
             <div className="row">
                     {this.state.notifications.map(this.renderNotification).reverse() }

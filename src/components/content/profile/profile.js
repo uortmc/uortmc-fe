@@ -6,7 +6,7 @@ import profile from './requests'
 import alert from "../../utils/alert/alert";
 import './profile.css'
 import Content_header from "../../../etc/ContentHeader/content_header";
-import scan_img from "../../../resources/scan.png";
+import profile_img from "../../../resources/icons/profile.png";
 class Profile extends React.Component{
     constructor(props) {
         super(props);
@@ -59,7 +59,7 @@ class Profile extends React.Component{
         return <div className="container-fluid">
                 {this.state.alert}
                 <div className="row">
-                    <Content_header img={user_img}
+                    <Content_header img={profile_img}
                                     message="My profile"
                     />
                 </div>

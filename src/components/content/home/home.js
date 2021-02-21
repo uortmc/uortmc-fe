@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './home.css'
 import Content_header from "../../../etc/ContentHeader/content_header";
-import user_img from "../../../resources/user.png";
+import home_img from "../../../resources/icons/home.png";
 import Hint from "./hints/hint";
 import create_patient from '../../../resources/hint-videos/create-patient.mp4'
 import create_scan from '../../../resources/hint-videos/create-scan.mp4'
@@ -101,7 +101,7 @@ function Home() {
     }
     return <div className="container-fluid">
             <div className="row">
-                <Content_header img={user_img} message="Home"/>
+                <Content_header img={home_img} message="Home"/>
             </div>
             <div className="row">
                     <div className="box col-12">
