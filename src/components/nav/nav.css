@@ -3,6 +3,8 @@
 }
 .tmc_nav_user_name{
     margin: 0 0;
+    border-left: 1px solid black;
+    padding-left: 5px;
 }
 .tmc_nav_logo{
     width: 150px;

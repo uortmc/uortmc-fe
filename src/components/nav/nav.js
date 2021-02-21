@@ -117,7 +117,6 @@ class NavBar extends React.Component{
                     </li>
                 </ul>
                 <span className="navbar-text">
-                    <img className="tmc_nav_user_icon" src={user_img} />
                     <span className="tmc_nav_user_name"> {this.state.username}</span>
                     {this.state.alert}
                 </span>
