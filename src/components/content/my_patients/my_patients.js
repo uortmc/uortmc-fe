@@ -9,7 +9,7 @@ import PatientsRequests from "./requests";
 import alert from "../../utils/alert/alert";
 import PatientView from "../patient_view/patient_view";
 import Content_header from "../../../etc/ContentHeader/content_header";
-import scan_img from "../../../resources/scan.png";
+import my_patients_img from "../../../resources/icons/patients_or_scans_list.png";
 
 import user_img from "../../../resources/user.png";
 class MyPatients extends React.Component {
@@ -173,7 +173,7 @@ class MyPatients extends React.Component {
         return <div className="container-fluid tmc_patients_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="My patients"/>
+                <Content_header img={my_patients_img} message="My patients"/>
             </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">

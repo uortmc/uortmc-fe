@@ -1,7 +1,7 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../../resources/user.png'
+import new_patient_png from '../../../resources/icons/new_patient.png'
 import new_patient from "./requests";
 import alert from "../../utils/alert/alert";
 import './new_patient.css'
@@ -79,7 +79,7 @@ class NewPatient extends React.Component{
         return <div className="container-fluid tmc_patient_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="Patient submission form"/>
+                <Content_header img={new_patient_png} message="Patient submission form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_patient_list_group col-12">

@@ -2,7 +2,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import alert from "../../utils/alert/alert";
-import scan_img from '../../../resources/scan.png'
+import new_scam_img from '../../../resources/icons/new_scan.png'
 import NinoVerifier from "../../../etc/utils";
 import NewScanRequests from "./requests";
 import './new_scan.css'
@@ -77,7 +77,7 @@ class NewScan extends React.Component{
         return <div className="container-fluid tmc_ns_container_fluid">
             {this.state.alert}
             <div className="row">
-                    <Content_header img={scan_img} message="Scan submission form"/>
+                    <Content_header img={new_scam_img} message="Scan submission form"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_scan_list_group col-12">

@@ -2,7 +2,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import alert from "../../utils/alert/alert";
-import user_img from "../../../resources/user.png";
+import patient_view_img from "../../../resources/icons/patient_or_scan_details.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";
 import './patient_view.css'
@@ -68,7 +68,7 @@ class PatientView extends React.Component {
         return <div className="container-fluid tmc_pv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={user_img} message="Patient details"/>
+                <Content_header img={patient_view_img} message="Patient details"/>
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_pv_list_group col-12">

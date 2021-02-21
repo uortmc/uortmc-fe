@@ -9,8 +9,8 @@ import alert from "../../utils/alert/alert";
 import ScansRequests from "./request";
 import ScanView from "../scan_view/scan_view";
 import Content_header from "../../../etc/ContentHeader/content_header";
-import scan_img from "../../../resources/scan.png";
 
+import my_scans_img from "../../../resources/icons/patients_or_scans_list.png";
 class MyScans extends React.Component {
     constructor(props) {
         super(props);
@@ -205,7 +205,7 @@ class MyScans extends React.Component {
         return <div className="container-fluid tmc_ms_container_fluid">
             {this.state.alert}
             <div className="row">
-                <Content_header img={scan_img} message="My scans"/>
+                <Content_header img={my_scans_img} message="My scans"/>
             </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
