@@ -3,47 +3,80 @@ import './home.css'
 import Content_header from "../../../etc/ContentHeader/content_header";
 import user_img from "../../../resources/user.png";
 import Hint from "./hints/hint";
+import create_patient from '../../../resources/hint-videos/create-patient.mp4'
+import create_scan from '../../../resources/hint-videos/create-scan.mp4'
+import view_scan_results from '../../../resources/hint-videos/view-scan-results.mp4'
+
 const firstComponent = () => {
-    return <Hint
-        header={"Introduction"}
-        subheader={"Welcome to UORTMC"}
-        message={"Welcome to the University of Reading's Thyroid Module Classifier, An AI-assisted decision-making system for thyroid nodule evaluation, classification, and prediction. It is a complete platform" +
-        "for developing state-of-the-art algorithms and procedures, to increase our insights in the fight against thyroid cancer. Please Navigate to the next hint for more information" +
-        "about how to use this software "}/>
+    return <div className="tmc_home_enclosing_div_hint">
+        <Hint
+            header={"Introduction"}
+            subheader={"Welcome to Tmc v1.0"}
+            message={"Welcome to the University of Reading's Thyroid Module Classifier, An AI-assisted decision-making system for thyroid nodule evaluation, classification, and prediction. " +
+            "It is a complete platform for developing and testing state-of-the-art algorithms and procedures, to increase our insights in the fight against thyroid cancer. " +
+            "Please Navigate to the next hint for more information about how to use this software "}/>
+        </div>
 }
 const secondComponent = () => {
-    return <div>
+    let c = <div >
+        <video className="tmc_home_hint_video" controls autoPlay src={create_patient} type="video/mp4" />
+        <p className="tmc_home_hint_txt">
+            Before we submit our scan into the system, it is essential to create the associated patient for that scan. This will allow us to compare scans of different algorithms, and track a
+            patient's progress. navigate into the 'New Patient' button at your left. You will be redirected into the 'Patient submission form. By submitting the relevant information, a new entry will
+            be now visible into the 'My Patients' Menu.
+
+        </p>
+    </div>
+    return<div className="tmc_home_enclosing_div_hint">
         <Hint
-            header={"Create a Patient"}
-            subheader={"How"}
-            message={"Welcome to the University of Reading's Thyroid Module Classifier, An AI-assisted decision-making system for thyroid nodule evaluation, classification, and prediction. It is a complete platform" +
-            "for developing state-of-the-art algorithms and procedures, to increase our insights in the fight against thyroid cancer. Please Navigate to the next hint for more information" +
-            "about how to use this software "}/>
+            header={"Creating patient"}
+            subheader={"Concepts and Handling"}
+            message={c}/>
     </div>
 }
 const thirdComponent = () => {
-    return <Hint
-        header={"Introduction"}
-        subheader={"Welcome to UORTMC"}
-        message={"Welcome to the University of Reading's Thyroid Module Classifier, An AI-assisted decision-making system for thyroid nodule evaluation, classification, and prediction. It is a complete platform" +
-        "for developing state-of-the-art algorithms and procedures, to increase our insights in the fight against thyroid cancer. Please Navigate to the next hint for more information" +
-        "about how to use this software "}/>
+    let c = <div >
+        <video className="tmc_home_hint_video" controls autoPlay src={create_scan} type="video/mp4" />
+                <p className="tmc_home_hint_txt">
+                    After submitting the patient into our system. We are free to create our scan task. Please navigate into 'New Scan' button at your left. After imputting the nessesary information of the system
+
+                </p>
+    </div>
+    return<div className="tmc_home_enclosing_div_hint">
+        <Hint
+            header={"Creating scan"}
+            subheader={"Concepts and Handling"}
+            message={c}/>
+    </div>
 }
+/*
+{""}/>
+ */
+//<video className="tmc_home_hint_video" controls autoPlay src={create_patient} type="video/mp4" />/>
 const finalComponent = () => {
-    return <Hint
-        header={"Introduction"}
-        subheader={"Welcome to UORTMC"}
-        message={"Welcome to the University of Reading's Thyroid Module Classifier, An AI-assisted decision-making system for thyroid nodule evaluation, classification, and prediction. It is a complete platform" +
-        "for developing state-of-the-art algorithms and procedures, to increase our insights in the fight against thyroid cancer. Please Navigate to the next hint for more information" +
-        "about how to use this software "}/>
+    let c = <div >
+        <video className="tmc_home_hint_video" controls autoPlay src={view_scan_results} type="video/mp4" />
+        <p className="tmc_home_hint_txt">
+            Before we submit our scan into the system, it is essential to create the ascociated patient for that scan. This will allow us to compare scans of different algorithms, and track a
+            patient's progress. navigate into the 'New Patient' button at your left. You will be redirected into the 'Patient submission form. By submittig the relevant information, a new entry will
+            be now visible into the 'My Patients' Menu.
+
+        </p>
+    </div>
+    return<div className="tmc_home_enclosing_div_hint">
+        <Hint
+            header={"View scan results"}
+            subheader={"Concepts and Handling"}
+            message={c}/>
+    </div>
 }
 
 function Home() {
 
     const [steps, setSteps] = useState([
         { key: 'firstStep', label: 'Welcome', isDone: true, component: firstComponent },
-        { key: 'secondStep', label: 'Create a Patient', isDone: false, component: secondComponent },
-        { key: 'thirdStep', label: 'Create a Scan', isDone: false, component: thirdComponent },
+        { key: 'secondStep', label: 'Create patient', isDone: false, component: secondComponent },
+        { key: 'thirdStep', label: 'Create scan', isDone: false, component: thirdComponent },
         { key: 'finalStep', label: 'View results', isDone: false, component: finalComponent },
     ]);
 
@@ -75,13 +108,13 @@ function Home() {
     }
 
     return (
-        <div className="container-fluid tmc_home_container_fluid">
+        <div className="container-fluid">
             <div className="row">
                 <Content_header img={user_img} message="Home"/>
             </div>
             <div className="row">
                     <div className="box col-12">
-                        <div className="steps">
+                        <div className="steps tmc_home_steps_fullspan">
                             <ul className="nav">
                                 {steps.map((step, i) => {
                                     return <li key={i} className={`${activeStep.key === step.key ? 'active' : ''} ${step.isDone ? 'done' : ''}`}>
