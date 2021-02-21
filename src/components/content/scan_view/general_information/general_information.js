@@ -8,8 +8,12 @@ class GeneralInformation extends React.Component {
         super(props);
         this.state={
             comments:props.comments,
+            agree:this.doctorAgree(props.comments),
             alert:<div/>
         }
+    }
+    doctorAgree(comments){
+        return comments==="Not Set"?false:true;
     }
     onCommentChange(e){
         this.setState({
@@ -50,6 +54,47 @@ class GeneralInformation extends React.Component {
         this.setState({
             alert:<div/>
         })
+    }
+    commentSection(){
+        let disagre=<a className="list-group-item list-group-item-action" href="#list-item-1">
+            <form className="form-inline tmc_gi_form_fullspan">
+                <div className="container">
+                    <div className="row">
+                        <span className="input-group-text col-2" id="basic-addon1">Comments</span>
+                        <textarea className="form-control col-10" value={this.state.comments}
+                                  aria-label="Username" aria-describedby="basic-addon1"
+                                  onChange={this.onCommentChange.bind(this)} />
+                    </div>
+                </div>
+            </form>
+        </a>
+        if(!this.state.agree){
+            return <div/>
+        }
+        else return disagre
+    }
+    onDoctorOpinionClick(e){
+        let curr=this.state.agree
+        this.setState({
+            agree:!curr
+        })
+    }
+    doctorsOpinion(){
+        let generic=<a className="list-group-item list-group-item-action" href="#list-item-1">
+            <form className="form-inline tmc_gi_form_fullspan">
+                <div className="container">
+                    <div className="row">
+                        <span className="input-group-text col-2" id="basic-addon1">Agree?</span>
+                        <div className="btn-group col-10" role="group" aria-label="Basic example">
+                            <button type="button" className="btn btn-outline-primary" onClick={this.onDoctorOpinionClick.bind(this)}>
+                                {this.state.agree===true?"No":"Yes"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </a>
+        return generic
     }
     render(){
         return <div>
@@ -103,14 +148,15 @@ class GeneralInformation extends React.Component {
                     <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
-                                <span className="input-group-text col-2" id="basic-addon1">Comments</span>
-                                <textarea className="form-control col-10" value={this.state.comments}
-                                          aria-label="Username" aria-describedby="basic-addon1"
-                                          onChange={this.onCommentChange.bind(this)} />
+                                <span className="input-group-text col-2" id="basic-addon1">Created</span>
+                                <input type="text" className="form-control col-10" disabled placeholder={this.props.created}
+                                       aria-label="Username" aria-describedby="basic-addon1"/>
                             </div>
                         </div>
                     </form>
                 </a>
+                {this.doctorsOpinion()}
+                {this.commentSection()}
                 <a className="list-group-item list-group-item-action" href="#list-item-4">
                     <button className="btn btn-outline-primary float-left" onClick={this.onSaveChanges.bind(this)} >Save Changes</button>
                 </a>
