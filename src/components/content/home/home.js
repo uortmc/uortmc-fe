@@ -22,8 +22,8 @@ const secondComponent = () => {
         <video className="tmc_home_hint_video" controls autoPlay src={create_patient} type="video/mp4" />
         <p className="tmc_home_hint_txt">
             Before we submit our scan into the system, it is essential to create the associated patient for that scan. This will allow us to compare scans of different algorithms, and track a
-            patient's progress. navigate into the 'New Patient' button at your left. You will be redirected into the 'Patient submission form. By submitting the relevant information, a new entry will
-            be now visible into the 'My Patients' Menu.
+            patient's progress. Navigate into the 'New Patient' button at your left. You will be redirected into the 'Patient submission form. By submitting the relevant information, a new entry will
+            be now visible into the 'My Patients' menu.
 
         </p>
     </div>
@@ -38,8 +38,8 @@ const thirdComponent = () => {
     let c = <div >
         <video className="tmc_home_hint_video" controls autoPlay src={create_scan} type="video/mp4" />
                 <p className="tmc_home_hint_txt">
-                    After submitting the patient into our system. We are free to create our scan task. Please navigate into 'New Scan' button at your left. After imputting the nessesary information of the system
-
+                    After submitting the patient into our system, we are free to create our scan task. Please navigate to the 'New Scan' button at your left.
+                    After inputting the necessary information of the system, a new entry will be now visible under 'My Scans' menu.
                 </p>
     </div>
     return<div className="tmc_home_enclosing_div_hint">
@@ -49,18 +49,12 @@ const thirdComponent = () => {
             message={c}/>
     </div>
 }
-/*
-{""}/>
- */
-//<video className="tmc_home_hint_video" controls autoPlay src={create_patient} type="video/mp4" />/>
 const finalComponent = () => {
     let c = <div >
         <video className="tmc_home_hint_video" controls autoPlay src={view_scan_results} type="video/mp4" />
         <p className="tmc_home_hint_txt">
-            Before we submit our scan into the system, it is essential to create the ascociated patient for that scan. This will allow us to compare scans of different algorithms, and track a
-            patient's progress. navigate into the 'New Patient' button at your left. You will be redirected into the 'Patient submission form. By submittig the relevant information, a new entry will
-            be now visible into the 'My Patients' Menu.
-
+            The final step is to view the scan results. Please click the 'My Scans' button at the left of the screen. Click on the 'Details' button, and you will be redirected to the 'Scan view' page.
+            By Clicking the 'Results' tab, you will see the output of the prediction algorithm.
         </p>
     </div>
     return<div className="tmc_home_enclosing_div_hint">
@@ -82,9 +76,8 @@ function Home() {
 
     const [activeStep, setActiveStep] = useState(steps[0]);
 
-    const handleNext = () => {
+    const handleNext = (e) => {
         if (steps[steps.length - 1].key === activeStep.key) {
-            alert('You have completed all steps.');
             return;
         }
 
@@ -106,9 +99,7 @@ function Home() {
         }))
         setActiveStep(steps[index - 1]);
     }
-
-    return (
-        <div className="container-fluid">
+    return <div className="container-fluid">
             <div className="row">
                 <Content_header img={user_img} message="Home"/>
             </div>
@@ -133,7 +124,7 @@ function Home() {
                     </div>
                 </div>
         </div>
-    );
+    ;
 }
 
 export default Home;
