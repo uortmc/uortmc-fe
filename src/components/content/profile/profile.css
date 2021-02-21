@@ -1,10 +1,15 @@
-.tmc_user_img_profile{
-    margin: 15% 25%;
+
+.tmc_profile_info_area_profile{
+    margin: 5% 15%;
 }
-.list-group{
-    padding:0;
-}
-.tmc_patient_form_icon{
+.tmc_profile_patient_form_icon{
     width: 60px;
     height: 60px;
+}
+.tmc_profile_rounded_element{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.tmc_profile_margin_bottom_ed_element{
+    margin-bottom: 2%;
 }

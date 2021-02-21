@@ -48,10 +48,10 @@ class Results extends React.Component {
         return <div>
             {this.state.alert}
             <div>
-                <div className="tmc_content_general_info_status_bar">
-                    <span className="card-title text-left tmc_content_general_info_task_id">Classification</span>
-                    <span className="card-title text-right tmc_content_general_info_status">
-                <button className="btn btn-success">{this.state.results}</button>
+                <div>
+                    <span className="card-title text-left">Classification</span>
+                    <span className="card-title text-right">
+                <button className="btn btn-outline-primary">{this.state.results}</button>
             </span>
                 </div>
                 <img className="tmc_scan_image" src={example_scan}/>

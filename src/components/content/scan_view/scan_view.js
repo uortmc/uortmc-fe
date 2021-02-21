@@ -1,19 +1,13 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NinoVerifier from "../../../etc/utils";
-import NewScanRequests from "../new_scan/requests";
 import alert from "../../utils/alert/alert";
 import scan_img from "../../../resources/scan.png";
-import new_patient from "../new_patient/requests";
-import user_img from "../../../resources/user.png";
-import MyScans from "../my_scans/my_scans";
-import setComment from "./requests";
-import example_scan from "../../../resources/example_scan.jpg";
 import GeneralInformation from "./general_information/general_information";
 import Results from "./results/results";
-
+import './scan_view.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
+import scan_view_img from "../../../resources/icons/patient_or_scan_details.png";
 class ScanView extends React.Component {
     constructor(props) {
         super(props);
@@ -90,23 +84,10 @@ class ScanView extends React.Component {
         })
     }
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_sv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Scan View
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Content_header img={scan_view_img} message="Scan details"/>
             </div>
             <div className="row">
                 <div className="card text-center col-12">
@@ -114,7 +95,7 @@ class ScanView extends React.Component {
                         <ul className="nav nav-tabs card-header-tabs">
                             <li className="nav-item">
                                 {this.renderNavLink(
-                                    "General Information",
+                                    "General information",
                                     this.state.generalInfoActive,
                                     this.onGeneralInformationClick.bind(this))}
                             </li>

@@ -1,7 +1,6 @@
 
 import Enviroment from "../../../settings";
 var axios = require('axios');
-var qs = require('qs');
 function notifications(onSuccessCallback,onApiErrorCallback,onErrorCallback) {
     var config = {
         method: 'get',

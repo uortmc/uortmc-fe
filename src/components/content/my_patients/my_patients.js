@@ -1,18 +1,18 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from "../profile/profile";
-import style from './patients.css'
-
+import './my_patients.css'
 import Handsontable from "handsontable";
 import { HotTable, HotColumn } from "@handsontable/react";
 import "handsontable/dist/handsontable.min.css";
 import PatientsRequests from "./requests";
 import alert from "../../utils/alert/alert";
 import PatientView from "../patient_view/patient_view";
+import Content_header from "../../../etc/ContentHeader/content_header";
+import my_patients_img from "../../../resources/icons/patients_or_scans_list.png";
 
-class Patients extends React.Component {
+import user_img from "../../../resources/user.png";
+class MyPatients extends React.Component {
     constructor(props) {
         super(props);
         this.setContent=props.setContent
@@ -26,15 +26,19 @@ class Patients extends React.Component {
             table_conf:{
                 width: '100%',
                 stretchH:"all",
-
+                autoColumnSize: true,
+                hiddenColumns: {
+                    columns: [4],
+                    indicators: false
+                }
             },
             firstname_collumn_settings: {
-                title: "First Name",
+                title: "First name",
                 readOnly: true
 
             },
             lastname_collumn_settings: {
-                title: "Last Name",
+                title: "Last name",
                 readOnly: true
             },
             nino_collumn_settings: {
@@ -42,7 +46,7 @@ class Patients extends React.Component {
                 readOnly: true
             },
             enrolled_collumn_settings: {
-                title: "Enrolled Date",
+                title: "Enrolled date",
                 readOnly: true
             },
             comments_collumn_settings: {
@@ -166,20 +170,23 @@ class Patients extends React.Component {
         );
     }
     render() {
-        return <div className="containter">
+        return <div className="container-fluid tmc_patients_container_fluid">
             {this.state.alert}
+            <div className="row">
+                <Content_header img={my_patients_img} message="My patients"/>
+            </div>
             <div className="row">
                 <nav className="col-12 navbar navbar-light bg-light">
                     <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search by NINO" value={this.state.search} onChange={this.onSearchChange.bind(this)} aria-label="Search"/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" onClick={this.onSearch.bind(this)} type="submit">Search
+                            <button className="btn btn-outline-primary my-2 my-sm-0" onClick={this.onSearch.bind(this)} type="submit">Search
                             </button>
 
                     </form>
                 </nav>
             </div>
             <div className="row">
-                <div className="col-12 tmc_hot_table_area">
+                <div className="col-12 tmc_patients_hot_table_area">
                     {this.renderTable()}
                 </div>
             </div>
@@ -188,4 +195,4 @@ class Patients extends React.Component {
 }
 
 
-export default Patients;
+export default MyPatients;

@@ -1,6 +1,11 @@
-.tmc_user_img_profile{
-    margin: 15% 25%;
+.tmc_about_logo{
+    width: 90%;
+    margin-left: 20%;
+    margin-right: auto;
+    margin-top: 18%;
+    margin-bottom: auto;
 }
-.list-group{
-    padding:0;
+.tmc_about_elements{
+    text-align: left;
+    margin-left: 25%;
 }

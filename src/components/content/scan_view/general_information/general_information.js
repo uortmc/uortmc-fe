@@ -1,7 +1,7 @@
 import React from "react";
 import alert from "../../../utils/alert/alert";
 import setComment from "./requests";
-
+import './general_information.css'
 
 class GeneralInformation extends React.Component {
     constructor(props) {
@@ -54,9 +54,9 @@ class GeneralInformation extends React.Component {
     render(){
         return <div>
             {this.state.alert}
-            <div id="list-example" className="list-group col-12">
+            <div id="list-example" className="list-group tmc_gi_list_group col-12">
                 <a className="list-group-item list-group-item-action" href="#list-item-1">
-                    <form className="form-inline tmc_form_fullspan">
+                    <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
                                 <span className="input-group-text col-2" id="basic-addon1">Type</span>
@@ -67,7 +67,7 @@ class GeneralInformation extends React.Component {
                     </form>
                 </a>
                 <a className="list-group-item list-group-item-action" href="#list-item-1">
-                    <form className="form-inline tmc_form_fullspan">
+                    <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
                                 <span className="input-group-text col-2" id="basic-addon1">Identifier</span>
@@ -78,7 +78,7 @@ class GeneralInformation extends React.Component {
                     </form>
                 </a>
                 <a className="list-group-item list-group-item-action" href="#list-item-1">
-                    <form className="form-inline tmc_form_fullspan">
+                    <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
                                 <span className="input-group-text col-2" id="basic-addon1">Status</span>
@@ -89,7 +89,7 @@ class GeneralInformation extends React.Component {
                     </form>
                 </a>
                 <a className="list-group-item list-group-item-action" href="#list-item-1">
-                    <form className="form-inline tmc_form_fullspan">
+                    <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
                                 <span className="input-group-text col-2" id="basic-addon1">Created</span>
@@ -100,7 +100,7 @@ class GeneralInformation extends React.Component {
                     </form>
                 </a>
                 <a className="list-group-item list-group-item-action" href="#list-item-1">
-                    <form className="form-inline tmc_form_fullspan">
+                    <form className="form-inline tmc_gi_form_fullspan">
                         <div className="container">
                             <div className="row">
                                 <span className="input-group-text col-2" id="basic-addon1">Comments</span>
@@ -112,7 +112,7 @@ class GeneralInformation extends React.Component {
                     </form>
                 </a>
                 <a className="list-group-item list-group-item-action" href="#list-item-4">
-                    <button className="btn btn-primary float-left" onClick={this.onSaveChanges.bind(this)} >Save Changes</button>
+                    <button className="btn btn-outline-primary float-left" onClick={this.onSaveChanges.bind(this)} >Save Changes</button>
                 </a>
 
             </div>

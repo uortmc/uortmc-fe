@@ -1,11 +1,12 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import user_img from '../../../resources/user.png'
-import style from './profile.css'
 import profile from './requests'
 import alert from "../../utils/alert/alert";
+import './profile.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
+import scan_img from "../../../resources/scan.png";
 class Profile extends React.Component{
     constructor(props) {
         super(props);
@@ -58,28 +59,100 @@ class Profile extends React.Component{
         return <div className="container-fluid">
                 {this.state.alert}
                 <div className="row">
-                    <div className="card col-12" >
-                        <div className="row">
-                            <div className="col-4">
-                                <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                            </div>
-                            <div className="col-8">
-                                <div className="card-body">
-                                    <h5 className="card-title">{this.state.first_name+" "+this.state.last_name}</h5>
-                                    <p className="card-text">{this.state.title}</p>
-                                    <p className="card-text"><small className="text-muted">Online Now</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Content_header img={user_img}
+                                    message="My profile"
+                    />
                 </div>
                 <div className="row">
-                    <div id="list-example" className="list-group col-12">
-                        <a className="list-group-item list-group-item-action" href="#list-item-1">Permission : Doctor</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-2">Enrolled Date : {this.state.enrolled_date}</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-3">Total Tasks : {this.state.tasks}</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Quota Left : No limit</a>
-                        <a className="list-group-item list-group-item-action" href="#list-item-4">Tasks Montly Quota : No limit</a>
+                    <div id="list-example" className="list-group tmc_pv_list_group col-12">
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Type</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder="Doctor"
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">First name</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={this.state.first_name}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Last name</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={this.state.last_name}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Title</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={this.state.title}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Tasks</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={this.state.tasks}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Task quota</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={"No limit"}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Tasks left</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={"Infinite"}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
+                        <a className="list-group-item list-group-item-action" href="#list-item-1">
+                            <form className="form-inline tmc_pv_form_fullspan">
+                                <div className="container">
+                                    <div className="row">
+                                        <span className="input-group-text col-2" id="basic-addon1">Enrolled date</span>
+                                        <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
+                                               aria-label="Username" aria-describedby="basic-addon1"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import notifications from "./requests";
 import alert from "../../utils/alert/alert";
-
+import Content_header from "../../../etc/ContentHeader/content_header";
+import user_img from "../../../resources/user.png";
+import './notifications.css'
 class Notifications extends React.Component{
     constructor(props) {
         super(props);
@@ -45,10 +46,9 @@ class Notifications extends React.Component{
     }
     renderNotification(notification){
 
-        return <div className="container-fluid">
-
+        return <div className="col-12 tmc_notifications-no-padding">
             <div className="card border-info mb-3" >
-                <div className="card-body text-info">
+                <div className="card-body text-primary">
                     <h5 className="card-title">Notification</h5>
                     <p className="card-text">Message: {notification.message}</p>
                     <p className="card-text"><small className="text-muted">Created: {notification.created}</small></p>
@@ -58,9 +58,14 @@ class Notifications extends React.Component{
     }
 
     render() {
-        return <div className="container">
+        return <div className="container-fluid">
             {this.state.alert}
-            {this.state.notifications.map(this.renderNotification).reverse() }
+            <div className="row">
+                <Content_header img={user_img} message="Notifications"/>
+            </div>
+            <div className="row">
+                    {this.state.notifications.map(this.renderNotification).reverse() }
+            </div>
         </div>
     }
 }

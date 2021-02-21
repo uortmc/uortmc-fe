@@ -1,10 +1,4 @@
-.tmc_patient_list{
-    padding: 0;
-}
-.tmc_patient_search{
-    align-content: center;
-}
-.tmc_hot_table_area{
+.tmc_ms_hot_table_area{
     width:100%;
     padding: 0px;
 }

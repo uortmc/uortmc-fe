@@ -1,16 +1,12 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NinoVerifier from "../../../etc/utils";
-import NewScanRequests from "../new_scan/requests";
 import alert from "../../utils/alert/alert";
-import scan_img from "../../../resources/scan.png";
-import new_patient from "../new_patient/requests";
-import user_img from "../../../resources/user.png";
+import patient_view_img from "../../../resources/icons/patient_or_scan_details.png";
 import MyScans from "../my_scans/my_scans";
 import setComment from "./requests";
-
+import './patient_view.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
 
 class PatientView extends React.Component {
 
@@ -69,28 +65,15 @@ class PatientView extends React.Component {
         })
     }
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_pv_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={user_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Patient View
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Content_header img={patient_view_img} message="Patient details"/>
             </div>
             <div className="row">
-                <div id="list-example" className="list-group col-12">
+                <div id="list-example" className="list-group tmc_pv_list_group col-12">
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Type</span>
@@ -101,7 +84,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">First name</span>
@@ -112,7 +95,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Last name</span>
@@ -123,7 +106,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Nino</span>
@@ -134,10 +117,10 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled Date</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Enrolled date</span>
                                     <input type="text" className="form-control col-10" disabled placeholder={this.state.enrolled_date}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
@@ -145,7 +128,7 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_pv_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Comments</span>
@@ -156,8 +139,8 @@ class PatientView extends React.Component {
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Save Changes</button>
-                        <button className="btn btn-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View Scans</button>
+                        <button className="btn btn-outline-primary" onClick={this.onSubmit.bind(this)}>Save changes</button>
+                        <button className="btn btn-outline-primary float-right" onClick={this.onViewScansSubmit.bind(this)}>View scans</button>
                     </a>
 
                 </div>

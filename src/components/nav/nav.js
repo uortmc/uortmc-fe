@@ -1,16 +1,17 @@
 
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../resources/user.png'
-import style from './nav.css'
+import user_img from '../../resources/user.png';
 import Profile from "../content/profile/profile";
 import Home from "../content/home/home";
 import Notifications from "../content/notifications/notifications";
-import logo from '../../resources/logo.png'
+import logo from '../../resources/logo2.png'
 import Requests from "./requests";
 import alert from "../utils/alert/alert";
 import About from "../content/about/about";
 import notificationSound from '../../resources/notification.wav';
+import './nav.css'
+import '../../index.css'
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
@@ -86,11 +87,11 @@ class NavBar extends React.Component{
         })
     }
     render() {
-        return <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        return <nav className="navbar navbar-expand-lg navbar-light bg-light tmc_generic_rounded_element tmc_generic_bordered_element">
             {this.notificationSoundComponent()}
-            <a className="navbar-brand" href="#">
-                <img className="tmc_logo" src={logo}/>
-                UORTMC|Royal Berkshire Hospital</a>
+            <a className="navbar-brand tmc_nav_navbar_nav" href="#">
+                <img className="tmc_nav_logo" src={logo}/>
+            </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -99,25 +100,25 @@ class NavBar extends React.Component{
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item tmc_nav_item active">
+                    <li className="nav-item active">
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Home/>)}>Home <span className="sr-only">(current)</span></a>
                     </li>
-                    <li className="nav-item tmc_nav_item">
+                    <li className="nav-item">
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Profile/>)}>Profile</a>
                     </li>
-                    <li className="nav-item tmc_nav_item">
+                    <li className="nav-item">
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<Notifications/>)} >Notifications <span className="badge badge-pill badge-primary">
                             {this.state.notifications}
                         </span>
                         </a>
                     </li>
-                    <li className="nav-item tmc_nav_item">
+                    <li className="nav-item">
                         <a className="nav-link" href="#" onClick={(e)=>this.state.content_element_update(<About/>)} >About</a>
                     </li>
                 </ul>
                 <span className="navbar-text">
-                    <img className="tmc_user_icon" src={user_img} />
-                    <span className="tmc_user_name"> {this.state.username}</span>
+                    <img className="tmc_nav_user_icon" src={user_img} />
+                    <span className="tmc_nav_user_name"> {this.state.username}</span>
                     {this.state.alert}
                 </span>
             </div>

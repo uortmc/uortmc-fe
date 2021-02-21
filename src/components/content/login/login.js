@@ -1,14 +1,10 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import example_scan from "../../../resources/example_scan.jpg";
-import style from './login.css'
-
-import Enviroment from "../../../settings";
 import login from "./requests";
 import alert from "../../utils/alert/alert";
-import logo from "../../../resources/logo.png";
+import logo from "../../../resources/logo2.png";
+import './login.css'
 /**
  * LoginStatus
  */
@@ -73,10 +69,10 @@ class Login extends React.Component{
         return <div>
             <div className="container">
                 {this.state.alert}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light tmc_generic_rounded_element tmc_generic_bordered_element">
                     <a className="navbar-brand" href="#">
-                        <img className="tmc_logo" src={logo}/>
-                        UORTMC|Royal Berkshire Hospital</a>
+                        <img className="tmc_login_logo" src={logo}/>
+                    </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false"
@@ -102,7 +98,7 @@ class Login extends React.Component{
                                 <input type="password" className="form-control" value={this.state.password} onChange={this.onPasswordChange.bind(this)} id="exampleInputPassword1"
                                        placeholder="Password"/>
                             </div>
-                            <button type="submit" className="btn btn-primary"  onClick={(e)=>{this.onSubmit(e);e.preventDefault()}}>Log in</button>
+                            <button type="submit" className="btn btn-outline-primary"  onClick={(e)=>{this.onSubmit(e);e.preventDefault()}}>Log in</button>
                         </form>
                     </div>
                     <div className="col-4"/>

@@ -1,15 +1,12 @@
 
 import React from 'react';
-import ReactDom from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import user_img from '../../../resources/user.png'
-
 import alert from "../../utils/alert/alert";
-import Toast from 'react-bootstrap/Toast';
-import scan_img from '../../../resources/scan.png'
+import new_scam_img from '../../../resources/icons/new_scan.png'
 import NinoVerifier from "../../../etc/utils";
-import new_scan from "./requests";
 import NewScanRequests from "./requests";
+import './new_scan.css'
+import Content_header from "../../../etc/ContentHeader/content_header";
 class NewScan extends React.Component{
     constructor(props) {
         super(props);
@@ -77,28 +74,15 @@ class NewScan extends React.Component{
     }
 
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid tmc_ns_container_fluid">
             {this.state.alert}
             <div className="row">
-                <div className="card col-12" >
-                    <div className="row">
-                        <div className="col-4">
-                            <img src={scan_img} alt="ABC" className="tmc_user_img_profile tmc_patient_form_icon"/>
-                        </div>
-                        <div className="col-8">
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    Scan Submission Form
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <Content_header img={new_scam_img} message="Scan submission form"/>
             </div>
             <div className="row">
-                <div id="list-example" className="list-group col-12">
+                <div id="list-example" className="list-group tmc_scan_list_group col-12">
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Type</span>
@@ -109,10 +93,10 @@ class NewScan extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Created Date</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Created date</span>
                                     <input type="text" className="form-control col-10" disabled placeholder={new Date().toDateString()}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
@@ -120,7 +104,7 @@ class NewScan extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Patient's nino</span>
@@ -131,7 +115,7 @@ class NewScan extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Algorithm</span>
@@ -143,17 +127,17 @@ class NewScan extends React.Component{
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-1">
-                        <form className="form-inline tmc_form_fullspan">
+                        <form className="form-inline tmc_ns_form_fullspan">
                             <div className="container">
                                 <div className="row">
-                                    <span className="input-group-text col-2" id="basic-addon1">Scan Image</span>
+                                    <span className="input-group-text col-2" id="basic-addon1">Scan image</span>
                                     <input className="form-control col-10" type="file" id="formFileDisabled"/>
                                 </div>
                             </div>
                         </form>
                     </a>
                     <a className="list-group-item list-group-item-action" href="#list-item-4">
-                        <button className="btn btn-primary" onClick={this.onSubmit.bind(this)}>Submit new Scan</button>
+                        <button className="btn btn-outline-primary" onClick={this.onSubmit.bind(this)}>Submit new scan</button>
                     </a>
                 </div>
             </div>
