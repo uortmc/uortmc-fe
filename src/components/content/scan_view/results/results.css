@@ -1,3 +1,9 @@
 .tmc_scan_image{
     margin-top: 2%;
+    margin-left: 20%;
+    margin-right: auto;
+    border-radius: 15px;
+}
+.tmc_results_results{
+    margin-top: 2%;
 }
