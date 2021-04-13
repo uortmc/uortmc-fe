@@ -12,6 +12,7 @@ class NewScan extends React.Component{
         super(props);
         this.ninoregex=new NinoVerifier()
         this.state={
+            image:null,
             nino:"",
             algorithm:"SCV",
             alert:<div/>
@@ -28,6 +29,12 @@ class NewScan extends React.Component{
         })
         console.log(e.target.value)
     }
+    onImageChange(e){
+        this.setState({
+            image:e.target.files[0]
+        })
+        console.log(e.target.files[0])
+    }
     onSubmit(e){
         if(!this.verifyForm()){
             this.onGenericFailure("Please insert valid values on the respective inputs")
@@ -40,14 +47,16 @@ class NewScan extends React.Component{
         }
     }
     verifyForm(){
-        return this.ninoregex.verify(this.state.nino)
+        return this.ninoregex.verify(this.state.nino) &&    //Nino is valid
+            this.state.image!=null                          //Image has been submitted
     }
     onSuccessGetToken(responce){
         NewScanRequests.new_scan_taskbe(
             this.onSuccess.bind(this),
             this.onAPIFailure.bind(this),
             this.onGenericFailure.bind(this),
-            responce.responce.token)
+            responce.responce.token,
+            this.state.image)
     }
     onSuccess(responce){
         this.setState({
@@ -131,7 +140,9 @@ class NewScan extends React.Component{
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Scan image</span>
-                                    <input className="form-control col-10" type="file" id="formFileDisabled"/>
+                                    <input className="form-control col-10" type="file" id="formFileDisabled" onChange={
+                                        (e)=>this.onImageChange(e)
+                                    }/>
                                 </div>
                             </div>
                         </form>
