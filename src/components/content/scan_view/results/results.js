@@ -10,6 +10,7 @@ class Results extends React.Component {
         super(props);
         this.state={
             results:"",
+            prediction:"Not set",
             comments:props.comments,
             agree:this.doctorAgree(props.comments),
             alert:<div/>
@@ -78,7 +79,8 @@ class Results extends React.Component {
 
     onSuccessResult(responce){
         this.setState({
-            results:responce.responce.results
+            results:responce.responce.results,
+            prediction:responce.responce.prediction
         })
     }
     onSuccessComment(responce){
@@ -131,7 +133,7 @@ class Results extends React.Component {
                             <div className="container">
                                 <div className="row">
                                     <span className="input-group-text col-2" id="basic-addon1">Classification</span>
-                                    <input type="text" className="form-control col-10" disabled placeholder="Malignant"
+                                    <input type="text" className="form-control col-10" disabled placeholder={this.state.prediction}
                                            aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
