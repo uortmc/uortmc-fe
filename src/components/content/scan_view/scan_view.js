@@ -96,7 +96,7 @@ class ScanView extends React.Component {
                         <ul className="nav nav-tabs card-header-tabs">
                             <li className="nav-item">
                                 {this.renderNavLink(
-                                    "General information",
+                                    "General Information",
                                     this.state.generalInfoActive,
                                     this.onGeneralInformationClick.bind(this))}
                             </li>
