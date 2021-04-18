@@ -1,4 +1,4 @@
-import example_scan from "../../../../resources/example_scan.jpg";
+import loading_gif from "../../../../resources/loading.gif";
 import React from "react";
 import './results.css'
 import alert from "../../../utils/alert/alert";
@@ -11,6 +11,7 @@ class Results extends React.Component {
         this.state={
             results:"",
             prediction:"Not set",
+            image:<img className="tmc_scan_image" src={loading_gif}/>,
             comments:props.comments,
             agree:this.doctorAgree(props.comments),
             alert:<div/>
@@ -80,7 +81,8 @@ class Results extends React.Component {
     onSuccessResult(responce){
         this.setState({
             results:responce.responce.results,
-            prediction:responce.responce.prediction
+            prediction:responce.responce.prediction,
+            image: <img className="tmc_scan_image" src={`data:image/jpeg;base64,${responce.responce.image}`}/>
         })
     }
     onSuccessComment(responce){
@@ -122,9 +124,8 @@ class Results extends React.Component {
     render(){
         return <div className="container-fluid">
             {this.state.alert}
-
             <div className="row">
-                <img className="tmc_scan_image" src={example_scan}/>
+                {this.state.image}
             </div>
             <div className="row">
                 <div id="list-example" className="list-group tmc_gi_list_group col-12 tmc_results_results">

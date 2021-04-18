@@ -56,7 +56,6 @@ class NewScanRequests{
             });
         };
         return getBase64(image)
-            .then(imageStrWithHeader=>imageStrWithHeader.replace("data:image/png;base64,","")) //remove header png
             .then(imageStrWithHeader=>imageStrWithHeader.replace("data:image/jpeg;base64,","")) //remove header JPEG
     }
     static new_scan_taskbe(
