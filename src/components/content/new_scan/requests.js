@@ -63,14 +63,16 @@ class NewScanRequests{
         callback_api_err,
         callback_err,
         token,
-        image){
+        image,
+        algorithm){
 
         NewScanRequests.imageToBase64String(image)
             .then(
             imageStr=>{
                 var form = qs.stringify({
                     'token': token,
-                    'image': imageStr
+                    'image': imageStr,
+                    'algorithm':algorithm
                 });
                 var config = {
                     method: 'post',
