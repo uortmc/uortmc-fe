@@ -131,7 +131,7 @@ class NewScan extends React.Component{
                                     <span className="input-group-text col-2" id="basic-addon1">Algorithm</span>
                                         <select className="form-control col-10 " id="exampleFormControlSelect1" onChange={(e)=>{e.preventDefault();this.onSelectedAlgorithmChange(e)}}>
                                             <option value="SVC">(SVC) Simple C-Support Vector Machine v1</option>
-                                            <option value="RAS">(RAS) Residual neural network V18</option>
+                                            <option value="RES">(RES) Residual neural network V18</option>
                                         </select>
                                 </div>
                             </div>
