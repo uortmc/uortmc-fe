@@ -56,7 +56,8 @@ class NewScan extends React.Component{
             this.onAPIFailure.bind(this),
             this.onGenericFailure.bind(this),
             responce.responce.token,
-            this.state.image)
+            this.state.image,
+            this.state.algorithm)
     }
     onSuccess(responce){
         this.setState({
@@ -130,6 +131,7 @@ class NewScan extends React.Component{
                                     <span className="input-group-text col-2" id="basic-addon1">Algorithm</span>
                                         <select className="form-control col-10 " id="exampleFormControlSelect1" onChange={(e)=>{e.preventDefault();this.onSelectedAlgorithmChange(e)}}>
                                             <option value="SCV">(SCV) Simple C-Support Vector Machine v1</option>
+                                            <option value="RAS">(RAS) Residual neural network V18</option>
                                         </select>
                                 </div>
                             </div>
