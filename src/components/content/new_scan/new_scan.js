@@ -14,7 +14,7 @@ class NewScan extends React.Component{
         this.state={
             image:null,
             nino:"",
-            algorithm:"SCV",
+            algorithm:"SVC",
             alert:<div/>
         }
     }
